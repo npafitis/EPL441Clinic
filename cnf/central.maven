@@ -1,2 +1,3 @@
 # List repository contents using GAV coordinates
-
+mysql:mysql-connector-java:8.0.16
+com.mysql:management:5-0-2-beta

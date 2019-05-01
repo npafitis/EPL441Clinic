@@ -67,4 +67,23 @@ port: 33061
 username: homestead
 ```
 
+### Migrating Database(Creating DataBase Schema)
+For *nix Systems run the following
+```bash
+sudo ./gradlew run.cy.ac.ucy.epl441.migration
+```
+
+For Windows Systems run __gradlew.bat__ instead with the same arguments.
+
 Password is: __secret__
+
+## Database Schema
+
+![Schema](./EPL441ERD.png)
+
+## Building Project Applications
+To build all Application Project in the workspace run
+
+```bash
+./gradlew
+```
