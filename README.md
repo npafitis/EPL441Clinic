@@ -67,6 +67,16 @@ port: 33061
 username: homestead
 ```
 
+### Consuming Services
+Implementation classes of Services are not exported. That means that they're not public.
+What you do instead is a reference to the public interface, example:
+```java
+@Ref
+private UserService service;
+```
+and it will be automatically instantiated.
+You have to include the model.services.implementation package in your Run Requirements in bndrun.
+
 ### Migrating Database(Creating DataBase Schema)
 For *nix Systems run the following
 ```bash

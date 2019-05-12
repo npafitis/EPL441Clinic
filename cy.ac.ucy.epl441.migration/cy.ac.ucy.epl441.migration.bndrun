@@ -13,7 +13,7 @@
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.command)',\
 	bnd.identity;id='org.eclipse.osgi',\
 	bnd.identity;version='latest';id='cy.ac.ucy.epl441.migration',\
-	bnd.identity;version='latest';id='cy.ac.cy.epl441.mysql-dsf'
+	bnd.identity;version='latest';id='cy.ac.ucy.epl441.mysql-dsf'
 -runbundles: \
 	org.apache.felix.gogo.command;version='[1.0.2,1.0.3)',\
 	org.apache.felix.gogo.runtime;version='[1.0.10,1.0.11)',\
@@ -21,7 +21,7 @@
 	com.mysql.cj;version='[8.0.16,8.0.17)',\
 	cy.ac.ucy.epl441.migration;version=snapshot,\
 	org.apache.felix.scr;version='[2.1.10,2.1.11)',\
-	cy.ac.cy.epl441.mysql-dsf;version=snapshot,\
-	org.osgi.service.jdbc;version='[1.0.0,1.0.1)'
+	org.osgi.service.jdbc;version='[1.0.0,1.0.1)',\
+	cy.ac.ucy.epl441.mysql-dsf;version=snapshot
 -ignore-standalone: 
 -resolve: auto

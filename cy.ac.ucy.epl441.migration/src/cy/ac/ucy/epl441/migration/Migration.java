@@ -30,9 +30,8 @@ public class Migration {
 	
 	private static final String CREATE_ROLE_TABLE = 
 			"CREATE TABLE Role (\n" + 
-			"    roleId INTEGER not NULL AUTO_INCREMENT,\n" + 
-			"    description VARCHAR(255) not NULL,\n" + 
-			"    PRIMARY KEY ( roleId )\n" + 
+			"    role VARCHAR(255) not NULL unique,\n" + 
+			"    PRIMARY KEY (role)\n" + 
 			")";
 	
 	
@@ -40,11 +39,11 @@ public class Migration {
 			"CREATE TABLE User (\n" + 
 			"    userId INTEGER not NULL AUTO_INCREMENT,\n" + 
 			"    name VARCHAR(255) not NULL,\n" + 
-			"    email VARCHAR(255) not NULL,\n" + 
+			"    email VARCHAR(255) not NULL unique,\n" + 
 			"    phone VARCHAR(15) not NULL,\n" + 
-			"    roleId INTEGER not NULL,\n" + 
+			"    role VARCHAR(255) not NULL,\n" + 
 			"    PRIMARY KEY (userId),\n" + 
-			"    FOREIGN KEY (roleId) REFERENCES Role(roleId)\n" + 
+			"    FOREIGN KEY (role) REFERENCES Role(role)\n" + 
 			")";
 	
 	private static final String CREATE_WARNING_TABLE = 
