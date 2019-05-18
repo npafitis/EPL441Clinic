@@ -1,0 +1,20 @@
+<xml version="1.0" encoding="UTF-8"?>
+<Patients>
+
+<Patient>
+<patientid>584569</patientid>
+<name>George</name>
+<email>george@gmail.com</email>
+<phone>98898888</phone>
+<selfharm>yes</selfharm>
+</Patient>
+
+<Patient>
+<patientid>747474</patientid>
+<name>Helen</name>
+<email>helen@gmail.com</email>
+<phone>98661155</phone>
+<selfharm>no</selfharm>
+</Patient>
+
+</Patients>

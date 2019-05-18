@@ -1,0 +1,21 @@
+<xml version="1.0" encoding="UTF-8"?>
+<Allergies>
+
+<Allergy>
+<id>1</id>
+<name>Asthma</name>
+</Allergy>
+
+
+<Allergy>
+<id>2</id>
+<name>Dermatitis</name>
+</Allergy>
+
+<Allergy>
+<id>3</id>
+<name>Drug Allergy</name>
+</Allergy>
+
+
+</Allergies>
