@@ -21,6 +21,7 @@ import org.xml.sax.SAXException;
 
 import cy.ac.ucy.epl441.model.Allergy;
 import cy.ac.ucy.epl441.model.Consultation;
+import cy.ac.ucy.epl441.model.Diagnosis;
 import cy.ac.ucy.epl441.model.Incident;
 import cy.ac.ucy.epl441.model.InformationChanges;
 import cy.ac.ucy.epl441.model.Patient;
@@ -248,6 +249,13 @@ public class PatientFileService implements PatientService{
 
 	@Override
 	public ArrayList<Consultation> getConsultations(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public ArrayList<Diagnosis> getDiagnosis(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
