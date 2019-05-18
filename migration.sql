@@ -116,4 +116,4 @@ CREATE TABLE Diagnosis (
     PRIMARY KEY (diagnosis),
     FOREIGN KEY (patientId) REFERENCES Patient(patientId)
 )
-)
+
