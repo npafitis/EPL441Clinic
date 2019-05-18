@@ -1,0 +1,14 @@
+<PatientsAllergies>
+
+<PattientAllergy>
+<patientid>584569</patientid>
+<allergyid>2</allergyid>
+</PattientAllergy>
+
+<PattientAllergy>
+<patientid>747474</patientid>
+<allergyid>1</allergyid>
+</PattientAllergy>
+
+
+</PatientsAllergies>
