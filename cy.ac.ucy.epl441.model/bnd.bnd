@@ -15,4 +15,6 @@ Bundle-Version: 0.0.0.${tstamp}
 Export-Package: \
 	cy.ac.ucy.epl441.model,\
 	cy.ac.ucy.epl441.model.service
--privatepackage: cy.ac.ucy.epl441.model.service.implementation
+-privatepackage: \
+	cy.ac.ucy.epl441.model.service.implementation,\
+	cy.ac.ucy.epl441.model.service.fileservice
