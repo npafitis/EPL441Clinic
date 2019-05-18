@@ -6,7 +6,8 @@ Bundle-Version: 1.0.0.${tstamp}
 	osgi.cmpn;version=7.0.0,\
 	org.eclipse.osgi,\
 	osgi.core,\
-	org.apache.felix.gogo.runtime
+	org.apache.felix.gogo.runtime,\
+	cy.ac.ucy.epl441.model;version=latest
 
 javac.source: 1.8
 javac.target: 1.8

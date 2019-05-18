@@ -11,6 +11,7 @@ import org.osgi.service.component.annotations.Component;
 
 import cy.ac.ucy.epl441.model.Allergy;
 import cy.ac.ucy.epl441.model.Consultation;
+import cy.ac.ucy.epl441.model.Diagnosis;
 import cy.ac.ucy.epl441.model.Incident;
 import cy.ac.ucy.epl441.model.InformationChanges;
 import cy.ac.ucy.epl441.model.Patient;
@@ -205,6 +206,20 @@ public class PatientServiceImpl implements PatientService {
 				.collect(Collectors.toList())
 				);
 		return data;
+	}
+
+	@Override
+	public ArrayList<Diagnosis> getDiagnosis(int id) {
+		DiagnosisServiceImpl service = new DiagnosisServiceImpl(con);
+		ArrayList<Diagnosis> data = new ArrayList<Diagnosis>(
+				service
+				.getAll()
+				.stream()
+				.filter(diagnosis -> diagnosis.getPatientId() == id)
+				.collect(Collectors.toList())
+				);
+		return data;
+
 	}
 
 }

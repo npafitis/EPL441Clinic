@@ -107,3 +107,13 @@ CREATE TABLE PatientAllergy (
     FOREIGN KEY (allergyId) REFERENCES Allergy(allergyId),
     FOREIGN KEY (patientId) REFERENCES Patient(patientId)
 )
+
+CREATE TABLE Diagnosis (
+    diagnosisId INTEGER not NULL AUTO_INCREMENT,
+    patientId INTEGER not NULL,
+    details VARCHAR(255),
+    comments VARCHAR(255),
+    PRIMARY KEY (diagnosis),
+    FOREIGN KEY (patientId) REFERENCES Patient(patientId)
+)
+)

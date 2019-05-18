@@ -11,6 +11,9 @@ import javax.sql.DataSource;
 import org.osgi.service.component.annotations.*;
 import org.osgi.service.jdbc.DataSourceFactory;
 
+import cy.ac.ucy.epl441.model.service.UserService;
+import cy.ac.ucy.epl441.model.service.implementation.UserServiceImpl;
+
 @Component
 public class Migration {
 	
@@ -26,6 +29,8 @@ public class Migration {
 	private static final String DROP_TREATMENT_TABLE = "DROP TABLE Treatment";
 	private static final String DROP_TREATMENTALLERGY_TABLE = "DROP TABLE TreatmentAllergy";
 	private static final String DROP_PATIENTALLERGY_TABLE = "DROP TABLE PatientAllergy";
+	private static final String DROP_DIAGNOSIS_TABLE = "DROP TABLE Diagnosis";
+
 
 	
 	private static final String CREATE_ROLE_TABLE = 
@@ -146,9 +151,19 @@ public class Migration {
 			"    FOREIGN KEY (patientId) REFERENCES Patient(patientId)\n" + 
 			")";
 	
+	private static final String CREATE_DIAGNOSIS_TABLE = 
+			"CREATE TABLE Diagnosis (\n" + 
+			"    diagnosisId INTEGER not NULL AUTO_INCREMENT,\n" + 
+			"    patientId INTEGER not NULL,\n" + 
+			"    details VARCHAR(255),\n" + 
+			"    comments VARCHAR(255),\n" + 
+			"    PRIMARY KEY (diagnosisId),\n" + 
+			"    FOREIGN KEY (patientId) REFERENCES Patient(patientId)\n" + 
+			")";
+	
 	@Reference
 	private DataSourceFactory dsFactory;
-
+	
 	@Activate
 	private void activate() {
 		Properties properties = new Properties();
@@ -196,6 +211,10 @@ public class Migration {
 			if(tableExist(conn, "Treatment")) {
 				stmt.executeUpdate(DROP_TREATMENT_TABLE);
 				System.out.println("Dropped Treatment Table.");
+			}
+			if(tableExist(conn, "Diagnosis")) {
+				stmt.executeUpdate(DROP_DIAGNOSIS_TABLE);
+				System.out.println("Dropped Diagnosis Table.");
 			}
 			if(tableExist(conn, "InformationChange")) {
 				stmt.executeUpdate(DROP_INFORMATIONCHANGE_TABLE);
@@ -251,6 +270,8 @@ public class Migration {
 			System.out.println("Created Incident Table.");
 			stmt.executeUpdate(CREATE_TREATMENT_TABLE);
 			System.out.println("Created Treatment Table.");
+			stmt.executeUpdate(CREATE_DIAGNOSIS_TABLE);
+			System.out.println("Created Diagnosis Table.");
 			stmt.executeUpdate(CREATE_INFORMATIONCHANGE_TABLE);
 			System.out.println("Created InformationChange Table.");
 			stmt.executeUpdate(CREATE_RELATIVE_TABLE);

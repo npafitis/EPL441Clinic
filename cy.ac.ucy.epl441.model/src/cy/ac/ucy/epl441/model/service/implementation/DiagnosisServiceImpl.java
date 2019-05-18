@@ -6,28 +6,30 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import org.osgi.service.component.annotations.Component;
+import cy.ac.ucy.epl441.model.Diagnosis;
+import cy.ac.ucy.epl441.model.Patient;
+import cy.ac.ucy.epl441.model.service.DiagnosisService;
 
-import cy.ac.ucy.epl441.model.Allergy;
-import cy.ac.ucy.epl441.model.Treatment;
-import cy.ac.ucy.epl441.model.service.TreatmentService;
+public class DiagnosisServiceImpl implements DiagnosisService {
+	private Connection con;
+	
 
-@Component
-public class TreatmentServiceImpl implements TreatmentService {
-	public TreatmentServiceImpl(Connection con) {
+	public DiagnosisServiceImpl() {
+		super();
+	}
+	
+	public DiagnosisServiceImpl(Connection con) {
 		super();
 		this.con = con;
 	}
 
-	private Connection con;
-	
 	@Override
-	public void create(Treatment item) {
-		String query = 	"INSERT INTO Treatment (patientId, description, treatmentDate)\n" + 
+	public void create(Diagnosis item) {
+		String query = 	"INSERT INTO Diagnosis (patientId, details, comments)\n" + 
 				String.format("VALUES (%d, %s, %s)",
 						item.getPatientId(),
-						item.getDescription(),
-						item.getDate().toString()
+						item.getDetails(),
+						item.getComments()
 				);
 		try {
 			Statement stmt = con.createStatement();
@@ -36,29 +38,24 @@ public class TreatmentServiceImpl implements TreatmentService {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
-	}
-
-	public TreatmentServiceImpl() {
-		super();
 	}
 
 	@Override
-	public ArrayList<Treatment> getAll() {
-		String query = "SELECT * FROM Treatment";
-		ArrayList<Treatment> list = new ArrayList<Treatment>();
+	public ArrayList<Diagnosis> getAll() {
+		String query = "SELECT * FROM Diagnosis";
+		ArrayList<Diagnosis> list = new ArrayList<Diagnosis>();
 		try {
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
 			while (rs.next()) {
-				Treatment treatment = 
-						new Treatment(
+				Diagnosis diagnosis = 
+						new Diagnosis(
 								rs.getInt(0),
 								rs.getInt(1),
 								rs.getString(2),
-								rs.getDate(3)
+								rs.getString(3)
 								);
-				list.add(treatment);
+				list.add(diagnosis);
 			}		
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -67,20 +64,20 @@ public class TreatmentServiceImpl implements TreatmentService {
 	}
 
 	@Override
-	public Treatment get(int id) {
-		String query = "SELECT * FROM Treatment where treatmentId = "+id;
+	public Diagnosis get(int id) {
+		String query = "SELECT * FROM Diagnosis where diagnosisId ="+id;
 		try {
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
 			while (rs.next()) {
-				Treatment treatment = 
-						new Treatment(
+				Diagnosis diagnosis = 
+						new Diagnosis(
 								rs.getInt(0),
 								rs.getInt(1),
 								rs.getString(2),
-								rs.getDate(3)
+								rs.getString(3)
 								);
-				return treatment;
+				return diagnosis;
 			}		
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -89,25 +86,26 @@ public class TreatmentServiceImpl implements TreatmentService {
 	}
 
 	@Override
-	public void update(Treatment item) {
+	public void update(Diagnosis item) {
 		String query = 
-				"UPDATE Treatment" +
+				"UPDATE Diagnosis" +
 				"Set 	patientId = " + item.getPatientId() +
-				"		description = " + item.getDescription() +
-				"		treatmentDate = " + item.getDate().toString() +
-				"Where treatmentId = " + item.getTreatmentId();
+				"		details = " + item.getDetails() +
+				"		comments = " + item.getComments() +
+				"Where diagnosisId = " + item.getDiagnosisId();
 		try {
 			Statement stmt = con.createStatement();
 			stmt.executeUpdate(query);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+
 	}
 
 	@Override
 	public void delete(int id) {
 		String query  = 
-				"DELETE FROM Treatment WHERE treatmentId = " + id;
+				"DELETE FROM Diagnosis WHERE diagnosisId = " + id;
 		try {
 			Statement stmt = con.createStatement();
 			stmt.executeUpdate(query);
@@ -115,6 +113,12 @@ public class TreatmentServiceImpl implements TreatmentService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public Patient getPatient(Diagnosis diagnosis) {
+		PatientServiceImpl service = new PatientServiceImpl(con);
+		return service.get(diagnosis.getPatientId());
 	}
 
 }
