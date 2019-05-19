@@ -32,7 +32,7 @@ import cy.ac.ucy.epl441.model.service.PatientService;
 import cy.ac.ucy.epl441.model.service.TreatmentService;
 
 @Component
-public class ReportWindowImpl extends ReportWindow {
+public class ReportWindowImpl extends JFrame implements ReportWindow{
 
 	public JPanel contentPane;
 	public java.util.Date date;
