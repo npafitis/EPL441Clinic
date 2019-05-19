@@ -39,7 +39,6 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 
 
-@Component
 public class Calendar extends JFrame {
 
 	private JPanel contentPane;

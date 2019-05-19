@@ -14,4 +14,4 @@ javac.source: 1.8
 javac.target: 1.8
 
 Bundle-Version: 0.0.0.${tstamp}
-Export-Package: cy.ac.ucy.epl441.receptionist_view
+Export-Package: cy.ac.ucy.epl441.health_service_view

@@ -1,0 +1,22 @@
+Bundle-Version: 1.0.0.${tstamp}
+
+-baseline: *
+-buildpath: \
+	osgi.annotation;version=7.0.0,\
+	osgi.cmpn;version=7.0.0,\
+	osgi.core,\
+	cy.ac.ucy.epl441.records_view,\
+	cy.ac.ucy.epl441.health_service_view;version=latest,\
+	cy.ac.ucy.epl441.receptionist_view;version=latest,\
+	cy.ac.ucy.epl441.model;version=latest,\
+	cy.ac.ucy.epl441.mysql-dsf;version=latest,\
+	org.apache.felix.gogo.runtime,\
+	org.eclipse.osgi
+
+javac.source: 1.8
+javac.target: 1.8
+
+-includeresource: resources
+-privatepackage: cy.ac.ucy.epl441.clinic
+Bundle-Activator: cy.ac.ucy.epl441.clinic.Activator
+Import-Package: *

@@ -13,7 +13,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-@Component
+
 public class PatientInfo extends JInternalFrame {
 
 	/**

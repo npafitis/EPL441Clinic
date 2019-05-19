@@ -20,9 +20,5 @@ javac.target: 1.8
 -runrequires: bnd.identity;version='latest';id='cy.ac.ucy.epl441.migration'
 -runbundles: cy.ac.ucy.epl441.migration;version=snapshot
 Bundle-Activator: cy.ac.ucy.epl441.migration.Activator
-Import-Package: \
-	,\
-	,\
-	,\
-	*
+Import-Package: *
 -privatepackage: cy.ac.ucy.epl441.migration

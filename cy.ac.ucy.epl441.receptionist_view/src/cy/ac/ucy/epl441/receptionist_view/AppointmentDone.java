@@ -11,7 +11,7 @@ import org.osgi.service.component.annotations.Component;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-@Component
+
 public class AppointmentDone extends JInternalFrame {
 
 	/**
