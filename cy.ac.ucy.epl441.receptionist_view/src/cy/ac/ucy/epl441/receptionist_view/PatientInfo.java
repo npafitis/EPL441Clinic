@@ -14,80 +14,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 
-public class PatientInfo extends JInternalFrame {
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					PatientInfo frame = new PatientInfo(new Patient("","","",false, ""));
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	public PatientInfo(Patient p) {
-		setBounds(100, 100, 450, 300);
-		getContentPane().setLayout(null);
-		
-		JLabel lblPatientId = new JLabel("Patient ID:");
-		lblPatientId.setBounds(91, 43, 79, 16);
-		getContentPane().add(lblPatientId);
-		
-		JLabel lblName = new JLabel("Name:");
-		lblName.setBounds(91, 71, 61, 16);
-		getContentPane().add(lblName);
-		
-		JLabel lblEmail = new JLabel("E-mail:");
-		lblEmail.setBounds(91, 127, 61, 16);
-		getContentPane().add(lblEmail);
-		
-		JLabel lblPhone = new JLabel("Phone:");
-		lblPhone.setBounds(91, 155, 61, 16);
-		getContentPane().add(lblPhone);
-		
-		JLabel lblStatus = new JLabel("Status:");
-		lblStatus.setBounds(91, 183, 61, 16);
-		getContentPane().add(lblStatus);
-		
-		JLabel pid = new JLabel(String.valueOf(p.getPatientId()));
-		pid.setBounds(183, 43, 61, 16);
-		getContentPane().add(pid);
-		
-		JLabel pname = new JLabel(p.getName());
-		pname.setBounds(183, 71, 61, 16);
-		getContentPane().add(pname);
-		
-		JLabel pemail = new JLabel(p.getEmail());
-		pemail.setBounds(183, 127, 61, 16);
-		getContentPane().add(pemail);
-		
-		JLabel pphone = new JLabel(p.getPhone());
-		pphone.setBounds(183, 155, 61, 16);
-		getContentPane().add(pphone);
-		
-		JLabel pstatus = new JLabel(p.getStatus());
-		pstatus.setBounds(183, 183, 61, 16);
-		getContentPane().add(pstatus);
-		
-		JButton btnClose = new JButton("Close");
-		btnClose.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				getContentPane().setVisible(false);
-			}
-		});
-		btnClose.setBounds(111, 211, 117, 29);
-		getContentPane().add(btnClose);
-
-	}
+public interface PatientInfo{
+	public void create(Patient p);
+	
+	public void setVisible(boolean bool);
 
 }
