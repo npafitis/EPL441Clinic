@@ -11,8 +11,6 @@ import javax.sql.DataSource;
 import org.osgi.service.component.annotations.*;
 import org.osgi.service.jdbc.DataSourceFactory;
 
-import cy.ac.ucy.epl441.model.service.UserService;
-import cy.ac.ucy.epl441.model.service.implementation.UserServiceImpl;
 
 @Component
 public class Migration {
@@ -68,6 +66,7 @@ public class Migration {
 			"    email VARCHAR(255) not NULL,\n" + 
 			"    phone VARCHAR(15) not NULL,\n" + 
 			"    selfHarm BOOLEAN DEFAULT false,\n" + 
+			"	 status VARCHAR(255) not NULL, \n"+	
 			"    PRIMARY KEY (patientId)\n" + 
 			")";
 	

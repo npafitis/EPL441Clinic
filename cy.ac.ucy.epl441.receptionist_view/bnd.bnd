@@ -1,0 +1,17 @@
+-buildpath: \
+	osgi.annotation;version=7.0.0,\
+	osgi.core;version=7.0.0,\
+	osgi.cmpn;version=7.0.0,\
+	cy.ac.ucy.epl441.model;version=latest,\
+	cy.ac.ucy.epl441.mysql-dsf;version=latest
+
+-testpath: \
+	${junit},\
+	${mockito},\
+	${mockito-deps}
+
+javac.source: 1.8
+javac.target: 1.8
+
+Bundle-Version: 0.0.0.${tstamp}
+-privatepackage: cy.ac.ucy.epl441.receptionist_view

@@ -2,6 +2,7 @@ package cy.ac.ucy.epl441.model.service.fileservice;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.Connection;
 import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -244,6 +245,13 @@ public ArrayList<Patient> getPatients(Allergy allergy) {
 	
 	
 	return patientsallergy;
+}
+
+
+@Override
+public void setConnection(Connection con) {
+	// TODO Auto-generated method stub
+	
 }
 
 }

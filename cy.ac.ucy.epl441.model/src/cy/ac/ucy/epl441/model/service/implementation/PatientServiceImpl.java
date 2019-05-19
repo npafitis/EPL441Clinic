@@ -42,6 +42,10 @@ public class PatientServiceImpl implements PatientService {
 
 	}
 
+	public PatientServiceImpl() {
+		super();
+	}
+
 	public PatientServiceImpl(Connection con) {
 		super();
 		this.con = con;
@@ -61,7 +65,8 @@ public class PatientServiceImpl implements PatientService {
 								rs.getString(1),
 								rs.getString(2),
 								rs.getString(3),
-								rs.getBoolean(4)
+								rs.getBoolean(4),
+								rs.getString(5)
 								);
 				list.add(p);
 			}		
@@ -84,7 +89,8 @@ public class PatientServiceImpl implements PatientService {
 								rs.getString(1),
 								rs.getString(2),
 								rs.getString(3),
-								rs.getBoolean(4)
+								rs.getBoolean(4),
+								rs.getString(5)
 								);
 				return p;
 			}		
@@ -221,5 +227,9 @@ public class PatientServiceImpl implements PatientService {
 		return data;
 
 	}
-
+	@Override
+	public void setConnection(Connection con) {
+		this.con = con;
+		
+	}
 }

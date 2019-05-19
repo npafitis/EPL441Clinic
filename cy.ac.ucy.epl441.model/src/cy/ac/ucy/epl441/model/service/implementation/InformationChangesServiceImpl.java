@@ -42,6 +42,10 @@ public class InformationChangesServiceImpl implements InformationChangeService {
 		}
 	}
 
+	public InformationChangesServiceImpl() {
+		super();
+	}
+
 	@Override
 	public ArrayList<InformationChanges> getAll() {
 		String query = "SELECT * FROM InformationChange";
@@ -108,5 +112,9 @@ public class InformationChangesServiceImpl implements InformationChangeService {
 	public void delete(int id) {
 		return;
 	}
-
+	@Override
+	public void setConnection(Connection con) {
+		this.con = con;
+		
+	}
 }

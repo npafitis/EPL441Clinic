@@ -116,5 +116,9 @@ public class TreatmentServiceImpl implements TreatmentService {
 			e.printStackTrace();
 		}
 	}
-
+	@Override
+	public void setConnection(Connection con) {
+		this.con = con;
+		
+	}
 }

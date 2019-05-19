@@ -37,6 +37,10 @@ public class AllergyServiceImpl implements AllergyService {
 
 	}
 
+	public AllergyServiceImpl() {
+		super();
+	}
+
 	@Override
 	public ArrayList<Allergy> getAll() {
 		String query = "SELECT * FROM Allergy";
@@ -123,6 +127,12 @@ public class AllergyServiceImpl implements AllergyService {
 		}
 		return patients;
 
+	}
+
+	@Override
+	public void setConnection(Connection con) {
+		this.con = con;
+		
 	}
 
 }

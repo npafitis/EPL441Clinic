@@ -37,6 +37,10 @@ public class IncidentServiceImpl implements IncidentService {
 		}
 	}
 
+	public IncidentServiceImpl() {
+		super();
+	}
+
 	@Override
 	public ArrayList<Incident> getAll() {
 		String query = "SELECT * FROM Incident";
@@ -106,5 +110,9 @@ public class IncidentServiceImpl implements IncidentService {
 			e.printStackTrace();
 		}
 	}
-
+	@Override
+	public void setConnection(Connection con) {
+		this.con = con;
+		
+	}
 }

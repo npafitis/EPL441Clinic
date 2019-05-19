@@ -120,5 +120,9 @@ public class DiagnosisServiceImpl implements DiagnosisService {
 		PatientServiceImpl service = new PatientServiceImpl(con);
 		return service.get(diagnosis.getPatientId());
 	}
-
+	@Override
+	public void setConnection(Connection con) {
+		this.con = con;
+		
+	}
 }

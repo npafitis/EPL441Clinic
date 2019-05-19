@@ -32,6 +32,10 @@ public class RoleServiceImpl implements RoleService {
 		}
 	}
 
+	public RoleServiceImpl() {
+		super();
+	}
+
 	@Override
 	public ArrayList<Role> getAll() {
 		String query = "SELECT * FROM Role";
@@ -75,6 +79,11 @@ public class RoleServiceImpl implements RoleService {
 	@Override
 	public void delete(int id) {
 		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void setConnection(Connection con) {
+		this.con = con;
 		
 	}
 

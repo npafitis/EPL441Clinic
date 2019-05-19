@@ -2,6 +2,7 @@ package cy.ac.ucy.epl441.model.service.fileservice;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.Connection;
 import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -113,7 +114,7 @@ public class PatientFileService implements PatientService{
 		         phone= element.getElementsByTagName("phone").item(0).getTextContent();
 		         selfharm= Boolean.parseBoolean(element.getElementsByTagName("name").item(0).getTextContent());
 
-		         temp= new Patient(id,name,email,phone,selfharm);
+		         temp= new Patient(id,name,email,phone,selfharm, "");
 
 		         patients.add(temp);
 		    }
@@ -258,6 +259,13 @@ public class PatientFileService implements PatientService{
 	public ArrayList<Diagnosis> getDiagnosis(int id) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+
+	@Override
+	public void setConnection(Connection con) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

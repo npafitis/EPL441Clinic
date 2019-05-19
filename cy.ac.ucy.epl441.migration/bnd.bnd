@@ -7,14 +7,14 @@ Bundle-Version: 1.0.0.${tstamp}
 	org.eclipse.osgi,\
 	osgi.core,\
 	org.apache.felix.gogo.runtime,\
-	cy.ac.ucy.epl441.model;version=latest
+	cy.ac.ucy.epl441.mysql-dsf;version=latest,\
+	org.apache.servicemix.bundles.junit
 
 javac.source: 1.8
 javac.target: 1.8
 
 -includeresource: resources
 
--privatepackage: cy.ac.ucy.epl441.migration
 -runfw: org.eclipse.osgi;version='[3.13.100.v20180827-1536,3.13.100.v20180827-1536]'
 -runee: JavaSE-1.8
 -runrequires: bnd.identity;version='latest';id='cy.ac.ucy.epl441.migration'
@@ -25,3 +25,4 @@ Import-Package: \
 	,\
 	,\
 	*
+-privatepackage: cy.ac.ucy.epl441.migration

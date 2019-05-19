@@ -5,6 +5,7 @@ public class Patient {
 	private String name;
 	private String email;
 	private String phone;
+	private String status;
 	private boolean selfHarm;
 	public int getPatientId() {
 		return patientId;
@@ -36,20 +37,28 @@ public class Patient {
 	public void setSelfHarm(boolean selfHarm) {
 		this.selfHarm = selfHarm;
 	}
-	public Patient(String name, String email, String phone, boolean selfHarm) {
+	public Patient(String name, String email, String phone, boolean selfHarm, String status) {
 		super();
 		this.name = name;
 		this.email = email;
 		this.phone = phone;
 		this.selfHarm = selfHarm;
+		this.status = status;
 	}
-	public Patient(int patientId, String name, String email, String phone, boolean selfHarm) {
+	public Patient(int patientId, String name, String email, String phone, boolean selfHarm, String status) {
 		super();
 		this.patientId = patientId;
 		this.name = name;
 		this.email = email;
 		this.phone = phone;
 		this.selfHarm = selfHarm;
+		this.status=status;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	
 	

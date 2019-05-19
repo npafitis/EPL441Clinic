@@ -21,6 +21,10 @@ public class ConsultationServiceImpl implements ConsultationService {
 		this.con = con;
 	}
 
+	public ConsultationServiceImpl() {
+		super();
+	}
+
 	@Override
 	public void create(Consultation item) {
 		String query = 	"INSERT INTO Consultation (userId, patientId, consultationDate, attended)\n" + 
@@ -110,4 +114,9 @@ public class ConsultationServiceImpl implements ConsultationService {
 		}
 	}
 
+	@Override
+	public void setConnection(Connection con) {
+		this.con = con;
+		
+	}
 }

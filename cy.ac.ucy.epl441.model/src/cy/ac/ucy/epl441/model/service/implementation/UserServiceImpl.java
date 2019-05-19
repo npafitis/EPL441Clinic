@@ -67,6 +67,10 @@ public class UserServiceImpl implements UserService {
 		return list;
 	}
 
+	public UserServiceImpl() {
+		super();
+	}
+
 	@Override
 	public User get(int id) {
 		String query = "SELECT * FROM User WHERE userId = " + id;
@@ -147,5 +151,9 @@ public class UserServiceImpl implements UserService {
 				.collect(Collectors.toList());
 		return new ArrayList<PerscriptionWarning>(list);
 	}
-
+	@Override
+	public void setConnection(Connection con) {
+		this.con = con;
+		
+	}
 }

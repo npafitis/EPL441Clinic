@@ -38,6 +38,10 @@ public class RelativeServiceImpl implements RelativeService {
 		}
 	}
 
+	public RelativeServiceImpl() {
+		super();
+	}
+
 	@Override
 	public ArrayList<Relative> getAll() {
 		String query = "SELECT * FROM Relative";
@@ -113,6 +117,12 @@ public class RelativeServiceImpl implements RelativeService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public void setConnection(Connection con) {
+		this.con = con;
+		
 	}
 
 }

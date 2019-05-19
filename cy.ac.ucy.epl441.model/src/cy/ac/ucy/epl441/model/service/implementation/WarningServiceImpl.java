@@ -37,6 +37,10 @@ public class WarningServiceImpl implements WarningService {
 		}
 	}
 
+	public WarningServiceImpl() {
+		super();
+	}
+
 	@Override
 	public ArrayList<PerscriptionWarning> getAll() {
 		String query = "SELECT * FROM Warning";
@@ -107,5 +111,9 @@ public class WarningServiceImpl implements WarningService {
 		}
 
 	}
-
+	@Override
+	public void setConnection(Connection con) {
+		this.con = con;
+		
+	}
 }
