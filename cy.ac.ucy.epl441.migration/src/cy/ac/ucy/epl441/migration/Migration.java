@@ -11,6 +11,13 @@ import javax.sql.DataSource;
 import org.osgi.service.component.annotations.*;
 import org.osgi.service.jdbc.DataSourceFactory;
 
+/**
+* Component for the migration of the database
+*
+* @author  npafitis
+* @version 1.0
+* @since   2019-05-21 
+*/
 
 @Component
 public class Migration {

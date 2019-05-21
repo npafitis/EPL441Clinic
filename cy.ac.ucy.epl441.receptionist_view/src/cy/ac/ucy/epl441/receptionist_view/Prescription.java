@@ -11,6 +11,12 @@ import org.osgi.service.component.annotations.Component;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/**
+*  Prescription component interface.
+* @author  aphoti
+* @version 1.0
+* @since   2019-05-21 
+*/
 
 public interface Prescription {
 	public void create();

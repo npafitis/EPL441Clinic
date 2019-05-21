@@ -11,6 +11,14 @@ import org.osgi.service.component.annotations.Component;
 import cy.ac.ucy.epl441.model.Role;
 import cy.ac.ucy.epl441.model.service.RoleService;
 
+/**
+* An implementation of the roleService which offers update, delete and retrieval from the database.
+* 
+* @author  npafitis
+* @version 1.0
+* @since   2019-05-21 
+*/
+
 @Component
 public class RoleServiceImpl implements RoleService {
 	private Connection con;
@@ -35,7 +43,13 @@ public class RoleServiceImpl implements RoleService {
 	public RoleServiceImpl() {
 		super();
 	}
-
+	/**
+	* Retrieves the whole table from the database in an Arraylist
+	* 
+	* @author  npafitis
+	* @version 1.0
+	* @since   2019-05-21 
+	*/
 	@Override
 	public ArrayList<Role> getAll() {
 		String query = "SELECT * FROM Role";

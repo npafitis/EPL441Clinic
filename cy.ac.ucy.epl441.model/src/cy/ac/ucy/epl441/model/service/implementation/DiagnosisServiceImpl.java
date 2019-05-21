@@ -10,6 +10,14 @@ import cy.ac.ucy.epl441.model.Diagnosis;
 import cy.ac.ucy.epl441.model.Patient;
 import cy.ac.ucy.epl441.model.service.DiagnosisService;
 
+/**
+* An implementation of the diagnosisService which offers update, delete and retrieval from the database.
+* 
+* @author  npafitis
+* @version 1.0
+* @since   2019-05-21 
+*/
+
 public class DiagnosisServiceImpl implements DiagnosisService {
 	private Connection con;
 	
@@ -39,7 +47,13 @@ public class DiagnosisServiceImpl implements DiagnosisService {
 			e.printStackTrace();
 		}
 	}
-
+	/**
+	* Retrieves the whole table from the database in an Arraylist
+	* 
+	* @author  npafitis
+	* @version 1.0
+	* @since   2019-05-21 
+	*/
 	@Override
 	public ArrayList<Diagnosis> getAll() {
 		String query = "SELECT * FROM Diagnosis";

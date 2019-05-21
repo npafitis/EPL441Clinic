@@ -8,6 +8,14 @@ import org.osgi.service.jdbc.DataSourceFactory;
 
 import cy.ac.ucy.epl441.records_view.SelectPatient;
 
+/**
+* Activates the OSGi bundle
+*
+* @author  npafitis
+* @version 1.0
+* @since   2019-05-21 
+*/
+
 public class Activator implements BundleActivator {
 	
 	

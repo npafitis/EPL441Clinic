@@ -32,6 +32,14 @@ import java.sql.SQLException;
 import java.util.Properties;
 import java.awt.event.ActionEvent;
 
+/**
+* Interface of the RecordOptions component
+*
+* @author  aphoti
+* @version 1.0
+* @since   2019-05-21 
+*/
+
 public interface RecordOptions {
 
 	public void create(String patientID);

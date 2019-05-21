@@ -19,6 +19,14 @@ import cy.ac.ucy.epl441.model.Relative;
 import cy.ac.ucy.epl441.model.Treatment;
 import cy.ac.ucy.epl441.model.service.PatientService;
 
+/**
+* An implementation of the patientService which offers update, delete and retrieval from the database.
+* 
+* @author  npafitis
+* @version 1.0
+* @since   2019-05-21 
+*/
+
 @Component
 public class PatientServiceImpl implements PatientService {
 	private Connection con;
@@ -50,7 +58,13 @@ public class PatientServiceImpl implements PatientService {
 		super();
 		this.con = con;
 	}
-
+	/**
+	* Retrieves the whole table from the database in an Arraylist
+	* 
+	* @author  npafitis
+	* @version 1.0
+	* @since   2019-05-21 
+	*/
 	@Override
 	public ArrayList<Patient> getAll() {
 		String query = "SELECT * FROM Patient";

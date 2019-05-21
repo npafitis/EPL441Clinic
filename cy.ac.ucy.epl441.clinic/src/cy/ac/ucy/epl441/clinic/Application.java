@@ -6,6 +6,14 @@ import org.osgi.service.component.annotations.Reference;
 
 import cy.ac.ucy.epl441.records_view.SelectPatient;
 
+/**
+* Component that starts the application 
+*
+* @author  npafitis
+* @version 1.0
+* @since   2019-05-21 
+*/
+
 @Component
 public class Application {
 	

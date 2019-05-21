@@ -11,6 +11,13 @@ import org.osgi.service.component.annotations.Component;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/**
+* AppointmentDone Component, pops up a window if the given fields are valid to register an appointment.
+* @author  aphoti
+* @version 1.0
+* @since   2019-05-21 
+*/
+
 @Component
 public class AppointmentDoneImpl extends JInternalFrame implements AppointmentDone{
 

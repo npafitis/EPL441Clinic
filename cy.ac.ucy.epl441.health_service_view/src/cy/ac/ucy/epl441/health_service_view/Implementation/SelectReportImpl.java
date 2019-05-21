@@ -14,6 +14,14 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 
+/**
+* Component for the report selection screen. Sends the week and health center to the Report screen. 
+*
+* @author  aphoti
+* @version 1.0
+* @since   2019-05-21 
+*/
+
 @Component
 public class SelectReportImpl extends JFrame implements SelectReport{
 

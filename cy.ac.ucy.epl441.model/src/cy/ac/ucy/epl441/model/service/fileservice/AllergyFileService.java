@@ -25,6 +25,14 @@ import cy.ac.ucy.epl441.model.Allergy;
 import cy.ac.ucy.epl441.model.Patient;
 import cy.ac.ucy.epl441.model.service.AllergyService;
 
+/**
+* Component that offers update and retrieval services for allergy objects on the database.
+*
+* @author  npafitis
+* @version 1.0
+* @since   2019-05-21 
+*/
+
 @Component
 public class AllergyFileService implements AllergyService{
 	private File allergyfile;
@@ -78,6 +86,13 @@ public void create(Allergy item) {
 	
 	
 }
+/**
+* Retrieves the whole table from the database in an ArrayList of allergy objects
+*
+* @author  npafitis
+* @version 1.0
+* @since   2019-05-21 
+*/
 
 @Override
 public ArrayList<Allergy> getAll() {
@@ -103,6 +118,14 @@ public ArrayList<Allergy> getAll() {
 	return allergies;
 }
 
+
+/**
+* Retrieves an allergy object from the database using the id.
+*
+* @author  npafitis
+* @version 1.0
+* @since   2019-05-21 
+*/
 @Override
 public Allergy get(int id) {
 	// TODO Auto-generated method stub
@@ -119,6 +142,14 @@ public Allergy get(int id) {
 	}
 	return null;
 }
+
+/**
+* Used to update an allergy object.
+*
+* @author  npafitis
+* @version 1.0
+* @since   2019-05-21 
+*/
 
 @Override
 public void update(Allergy item) {
@@ -155,6 +186,14 @@ public void update(Allergy item) {
 	
 }
 
+/**
+* Used to delete an allergy element.
+*
+* @author  npafitis
+* @version 1.0
+* @since   2019-05-21 
+*/
+
 @Override
 public void delete(int id) {
 	// TODO Auto-generated method stub
@@ -187,6 +226,14 @@ public void delete(int id) {
 	}
     getAll();
 }
+
+/**
+* Retrieves the patient of a given allergy from the database in an ArrayList of patient objects
+*
+* @author  npafitis
+* @version 1.0
+* @since   2019-05-21 
+*/
 
 @Override
 public ArrayList<Patient> getPatients(Allergy allergy) {

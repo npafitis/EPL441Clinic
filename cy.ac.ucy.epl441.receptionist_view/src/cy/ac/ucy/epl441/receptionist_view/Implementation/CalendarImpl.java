@@ -38,6 +38,14 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 
+/**
+* Calendar Component is the receptionist's view with 3 panels. A panel for the todays appoinements.
+* A panel for searching patients and a panel for registering appointments. The receptionist is able to repeat a previous prescription and note if the patient attended the consultaiton.
+* @author  aphoti
+* @version 1.0
+* @since   2019-05-21 
+*/
+
 @Component
 public class CalendarImpl extends JFrame implements Calendar{
 

@@ -1,5 +1,13 @@
 package cy.ac.ucy.epl441.model;
 
+/**
+* Object that represents a patient's relative.
+*
+* @author  npafitis
+* @version 1.0
+* @since   2019-05-21 
+*/
+
 public class Relative {
 	private int relativeId;
 	private int patientId;

@@ -12,6 +12,14 @@ import org.osgi.service.component.annotations.Component;
 import cy.ac.ucy.epl441.model.PerscriptionWarning;
 import cy.ac.ucy.epl441.model.service.WarningService;
 
+/**
+* An implementation of the warningService which offers update, delete and retrieval from the database.
+* 
+* @author  npafitis
+* @version 1.0
+* @since   2019-05-21 
+*/
+
 @Component
 public class WarningServiceImpl implements WarningService {
 	private Connection con;
@@ -40,7 +48,13 @@ public class WarningServiceImpl implements WarningService {
 	public WarningServiceImpl() {
 		super();
 	}
-
+	/**
+	* Retrieves the whole table from the database in an Arraylist
+	* 
+	* @author  npafitis
+	* @version 1.0
+	* @since   2019-05-21 
+	*/
 	@Override
 	public ArrayList<PerscriptionWarning> getAll() {
 		String query = "SELECT * FROM Warning";

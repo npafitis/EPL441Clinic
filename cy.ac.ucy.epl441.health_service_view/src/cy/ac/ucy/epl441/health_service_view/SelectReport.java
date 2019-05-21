@@ -13,7 +13,13 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
-
+/**
+* Interface of the SelectReport
+*
+* @author  aphoti
+* @version 1.0
+* @since   2019-05-21 
+*/
 
 public interface SelectReport{
 	public void create();

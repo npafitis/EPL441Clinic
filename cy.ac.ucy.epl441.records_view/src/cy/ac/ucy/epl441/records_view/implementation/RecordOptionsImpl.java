@@ -32,6 +32,14 @@ import java.sql.SQLException;
 import java.util.Properties;
 import java.awt.event.ActionEvent;
 
+/**
+* RecordOptions component that implements RecordOptions interface. Shows the options of the user regarding a patient record.
+* Takes as input the patient id and retrieves its record using the patientService component.
+* @author  aphoti
+* @version 1.0
+* @since   2019-05-21 
+*/
+
 @Component
 public class RecordOptionsImpl extends JFrame implements RecordOptions {
 
