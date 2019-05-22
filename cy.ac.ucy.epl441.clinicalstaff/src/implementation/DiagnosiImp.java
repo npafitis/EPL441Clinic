@@ -5,7 +5,10 @@ import java.awt.GraphicsEnvironment;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -22,22 +25,35 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 
+import org.osgi.service.component.annotations.Component;
 import org.osgi.service.jdbc.DataSourceFactory;
 
 import cy.ac.ucy.epl441.clinicalstaff.Diagnosi;
 import cy.ac.ucy.epl441.model.Diagnosis;
 import cy.ac.ucy.epl441.model.Patient;
 import cy.ac.ucy.epl441.model.Treatment;
+import cy.ac.ucy.epl441.model.service.AllergyService;
 import cy.ac.ucy.epl441.model.service.DiagnosisService;
 import cy.ac.ucy.epl441.model.service.PatientService;
 import cy.ac.ucy.epl441.model.service.TreatmentService;
 
+@Component
 public class DiagnosiImp implements Diagnosi{
-	
+	//@Reference
 	private DataSourceFactory dsFactory;
+//	@Reference
 	private PatientService patientService;
+//	@Reference
 	private DiagnosisService diagnosisservice;
+//	@Reference
 	private TreatmentService treatmentservice;
+
+//	@Reference 
+	private AllergyService allergyservice; 
+//@Reference
+	private DiagnosisService consultationservice;
+	private Connection con;
+
 	
 	{
 	Properties properties = new Properties();
@@ -49,6 +65,9 @@ public class DiagnosiImp implements Diagnosi{
 		patientService.setConnection(ds.getConnection());
 		diagnosisservice.setConnection(ds.getConnection());
 		treatmentservice.setConnection(ds.getConnection());
+		allergyservice.setConnection(ds.getConnection());
+		consultationservice.setConnection(ds.getConnection());
+		con=ds.getConnection();
 
 		
 	} catch (SQLException e) {
@@ -120,17 +139,7 @@ public class DiagnosiImp implements Diagnosi{
 				ImageIcon home = new ImageIcon("home.png");
 				JButton bhome= new JButton (home);
 				bhome.setBounds(250,200,50,45);
-				bhome.addActionListener( new ActionListener(){
-					@Override
-				    public void actionPerformed(ActionEvent e) {
-						OpenNewRecordImp rec= new OpenNewRecordImp();
-						rec.OpenNewRecordcreate();
-						frame.setVisible(false);
-						
-
-				      
-				    }
-				});
+					
 				
 				JLabel treat= new JLabel("Treatment Records");
 				treat.setBounds(600,250,200,50);
@@ -140,13 +149,12 @@ public class DiagnosiImp implements Diagnosi{
 				ImageIcon cross = new ImageIcon("cross.png");
 				JButton treatment= new JButton (cross);
 				treatment.setBounds(630,200,50,45);
-				
+
 				treatment.addActionListener( new ActionListener(){
 					@Override
 				    public void actionPerformed(ActionEvent e) {
-						TreatmentRecordImp treat= new TreatmentRecordImp();
-						treat.createtretmentrecord(patientsid);
-						frame.setVisible(false);
+						TreatmentRecordImp treatm= new TreatmentRecordImp(patientsid,treatmentservice,patientService,consultationservice);
+						treatm.createtreatmentrecord();
 						
 
 				      
@@ -161,6 +169,16 @@ public class DiagnosiImp implements Diagnosi{
 				ImageIcon consult = new ImageIcon("record.png");
 				JButton consultation= new JButton (consult);
 				consultation.setBounds(1090,200,40,45);
+				consultation.addActionListener( new ActionListener(){
+					@Override
+				    public void actionPerformed(ActionEvent e) {
+						ConsultationsImp cons= new ConsultationsImp(patientsid,treatmentservice, patientService,consultationservice);
+						cons.createconsultations();
+						
+
+				      
+				    }
+				});
 				
 				JLabel patient= new JLabel("Patient Information");
 				patient.setBounds(1380,250,200,50);
@@ -172,12 +190,8 @@ public class DiagnosiImp implements Diagnosi{
 				patientinfo.addActionListener( new ActionListener(){
 					@Override
 				    public void actionPerformed(ActionEvent e) {
-						PersonalInfoImp info= new PersonalInfoImp();
-						info.createpersonalinfo(patientsid);
-						frame.setVisible(false);
-						
-
-				      
+						PersonalInfoImp info = new PersonalInfoImp(patientsid,treatmentservice,patientService,consultationservice);
+						info.createpersonalinfo();	      
 				    }
 				});
 			
@@ -191,7 +205,6 @@ public class DiagnosiImp implements Diagnosi{
 				bex.addActionListener( new ActionListener(){
 					@Override
 				    public void actionPerformed(ActionEvent e) {
-						OpenNewRecordImp exit= new OpenNewRecordImp();
 						frame.setVisible(false);
 						
 
@@ -204,10 +217,7 @@ public class DiagnosiImp implements Diagnosi{
 			
 			
 			JLabel patientid = new JLabel("Patient ID:");
-			//Font font = patientid.getFont();
-			//Map attributes = font.getAttributes();
-			//attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON );
-			//patientid.setFont(font.deriveFont(attributes));
+			
 			patientid.setFont(new Font("Serif", Font.PLAIN, height/35));
 			patientid.setBounds(52,300,200,50);
 			
@@ -252,7 +262,6 @@ public class DiagnosiImp implements Diagnosi{
 			
 			
 			
-			
 			SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy"); 
 			String dateString = format.format( new Date() );
 			JLabel today = new JLabel(dateString);
@@ -292,6 +301,14 @@ public class DiagnosiImp implements Diagnosi{
 			previous.setForeground(Color.RED);
 			previous.setBounds(350,395,355,80);
 			
+			ArrayList<Diagnosis> di=patientService.getDiagnosis(patientsid);
+			//otan tha vali t diagnosis o nikolas na t valo
+			//Date getdate=di.get(0).getDate;
+			/*for(int i=0; i<di.size(); i++) {
+			 if(getdate.
+				
+			}*/
+			
 			JLabel previousdate= new JLabel("");
 			previousdate.setFont(new Font("Serif", Font.PLAIN, height/35));
 			previousdate.setForeground(Color.RED);
@@ -307,8 +324,8 @@ public class DiagnosiImp implements Diagnosi{
 			    public void actionPerformed(ActionEvent e) {
 					String diagnosis=diagnspace.getText();
 					String details=detspace.getText();
-					String comments= commspace.getText();
-					diagnosisservice.create(new Diagnosis(patientsid,details,comments));
+					//String comments= commspace.getText();
+					diagnosisservice.create(new Diagnosis(patientsid,diagnosis,details));
 
 			      
 			    }
@@ -365,9 +382,8 @@ public class DiagnosiImp implements Diagnosi{
 				@Override
 			    public void actionPerformed(ActionEvent e) {
 					if(box.isSelected()){
-						ArrayList<Treatment> getAll= treatmentservice.getAll();
-						//for(int i=0; i<getAll.size(); i++) 
-
+						treatmentservice.create(new Treatment(patientsid,"Use the previous Prescription",(java.sql.Date) new Date()));
+						
 					}
 					else {
 						String drug	=putdrug1.getText();
@@ -392,6 +408,43 @@ public class DiagnosiImp implements Diagnosi{
 				@Override
 			    public void actionPerformed(ActionEvent e) {
 					smallwindow.setVisible(true);
+					String takedrug1= putdrug1.getText();
+					String takedrug2= putdrug2.getText();
+					String takedrug3= putdrug3.getText();
+					
+					// ALLON T TREATMENT ALLON TO DRUGS 
+					String query = "SELECT * FROM TREATMENTALLERGY";
+					ArrayList<treatmentallergy> list = new ArrayList<>();
+					try {
+						Statement stmt = con.createStatement();
+						ResultSet rs = stmt.executeQuery(query);
+						treatmentallergy obj;
+						while (rs.next()) {
+							int treatmentid=rs.getInt("treatmentId"); 
+							int allergyid=rs.getInt("allergyId");
+							obj=new treatmentallergy(treatmentid,allergyid);
+							list.add(obj);
+						}		
+					} catch (SQLException ex) {
+						ex.printStackTrace();
+					}
+				
+					
+					
+					int i;
+					String allergies="";
+					for(i=0; i<list.size(); i++) {
+						int trea=list.get(i).gettreatid();
+						if(treatmentservice.get(trea).getDescription().contains(takedrug1) || treatmentservice.get(trea).getDescription().contains(takedrug2)
+					|| treatmentservice.get(trea).getDescription().contains(takedrug3)){
+							allergies= allergies+","+allergyservice.get(i).getName();
+							
+						}
+						
+					}
+					seffects.setText(allergies);
+					
+					
 					
 					
 
@@ -452,6 +505,26 @@ public class DiagnosiImp implements Diagnosi{
 			
 			
 		}
+
+		
+	}
+		
+ class treatmentallergy{
+	 int treatmentid;
+	 int allergyid;
+	 
+	 public treatmentallergy(int treatmentid, int allergyid) {
+		 this.treatmentid= treatmentid;
+		 this.allergyid=allergyid;
+		 		 
+	 }
+	 
+	 public int gettreatid() {
+		 return this.treatmentid;
+	 }
+	 public int getallergyid() {
+		 return this.allergyid;
+	 }
 
 
 }

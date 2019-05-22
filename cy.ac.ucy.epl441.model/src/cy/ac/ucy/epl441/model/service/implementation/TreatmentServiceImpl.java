@@ -59,7 +59,7 @@ public class TreatmentServiceImpl implements TreatmentService {
 	*/
 	@Override
 	public ArrayList<Treatment> getAll() {
-		String query = "SELECT * FROM Treatment";
+		String query = "SELECT * FROM Treatment WHERE ";
 		ArrayList<Treatment> list = new ArrayList<Treatment>();
 		try {
 			Statement stmt = con.createStatement();

@@ -68,8 +68,6 @@ public class FindPatientImp implements FindPatient{
 			@Override
 		    public void actionPerformed(ActionEvent e) {
 				
-				
-				OpenNewRecord panel= new OpenNewRecord();
 				frame.setVisible(false);
 
 		      
@@ -133,7 +131,7 @@ public class FindPatientImp implements FindPatient{
 		
 		
 		
-		JLabel results= new JLabel("edoo ta apotelesmata");
+		JLabel results= new JLabel("");
 		results.setBounds(900,400,800,550);
 		results.setHorizontalAlignment(SwingConstants.LEFT);
 		results.setVerticalAlignment(SwingConstants.TOP);
