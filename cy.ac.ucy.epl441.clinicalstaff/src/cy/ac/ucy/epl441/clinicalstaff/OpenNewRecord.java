@@ -12,7 +12,13 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
+/**
+ * This is the interface for the first page of the clinical
+ * staff component that create the page for opening a record
+ * 
+ * @author Kyriaki Kekkou
+ *
+ */
 public interface OpenNewRecord {
 	
 	public void OpenNewRecordcreate();

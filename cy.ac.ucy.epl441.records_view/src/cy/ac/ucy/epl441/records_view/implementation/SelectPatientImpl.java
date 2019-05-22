@@ -19,6 +19,13 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
+/**
+* SelectPatient component that implements SelectPatient interface. The user types the patient id and opens the record through the RecordOptions component. 
+* @author  aphoti
+* @version 1.0
+* @since   2019-05-21 
+*/
+
 @Component
 public class SelectPatientImpl extends JFrame implements SelectPatient {
 

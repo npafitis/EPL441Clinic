@@ -2,6 +2,14 @@ package cy.ac.ucy.epl441.migration;
 
 import org.osgi.framework.*;
 
+/**
+* Activator for the migration bundle
+*
+* @author  npafitis
+* @version 1.0
+* @since   2019-05-21 
+*/
+
 public class Activator implements BundleActivator {
 	
 	

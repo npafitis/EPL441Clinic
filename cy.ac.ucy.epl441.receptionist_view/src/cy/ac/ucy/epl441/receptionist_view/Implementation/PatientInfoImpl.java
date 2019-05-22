@@ -15,6 +15,13 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/**
+* Patient info component is a pop up window which shows the information of the searched patient.
+* @author  aphoti
+* @version 1.0
+* @since   2019-05-21 
+*/
+
 @Component
 public class PatientInfoImpl extends JInternalFrame implements PatientInfo {
 

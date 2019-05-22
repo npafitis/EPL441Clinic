@@ -11,6 +11,14 @@ import org.osgi.service.component.annotations.Component;
 import cy.ac.ucy.epl441.model.Relative;
 import cy.ac.ucy.epl441.model.service.RelativeService;
 
+/**
+* An implementation of the relativeService which offers update, delete and retrieval from the database.
+* 
+* @author  npafitis
+* @version 1.0
+* @since   2019-05-21 
+*/
+
 @Component
 public class RelativeServiceImpl implements RelativeService {
 	private Connection con;
@@ -43,7 +51,13 @@ public class RelativeServiceImpl implements RelativeService {
 	public RelativeServiceImpl() {
 		super();
 	}
-
+	/**
+	* Retrieves the whole table from the database in an Arraylist
+	* 
+	* @author  npafitis
+	* @version 1.0
+	* @since   2019-05-21 
+	*/
 	@Override
 	public ArrayList<Relative> getAll() {
 		String query = "SELECT * FROM Relative";

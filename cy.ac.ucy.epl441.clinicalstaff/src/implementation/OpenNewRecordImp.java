@@ -15,6 +15,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.jdbc.DataSourceFactory;
@@ -24,8 +26,15 @@ import cy.ac.ucy.epl441.model.Patient;
 import cy.ac.ucy.epl441.model.service.PatientService;
 
 
-
-
+/**
+ * This class implements the OpenNewRecord
+ * and create the page for it is the basic component
+ * of this bundle
+ * 
+ * @author Kyriaki Kekkou
+ *
+ */
+@Component
 public class OpenNewRecordImp implements OpenNewRecord{
 	//@Reference
 	private DataSourceFactory dsFactory;
@@ -46,19 +55,13 @@ public class OpenNewRecordImp implements OpenNewRecord{
 		e.printStackTrace();
 	}
 }
-
-	
-	
-	
-	public static void main(String []args) {
-		OpenNewRecordImp panel= new OpenNewRecordImp();
-		
-		
-	}
-	public OpenNewRecordImp() {
-	}
-	
-	
+	/**
+	 * This method create the graphical interface
+	 * of the OpenNewRecord page and it's responsible
+	 * to manage the user's inputs
+	 * 
+	 */
+	@Activate
 	public void OpenNewRecordcreate() {
 		
 		GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -88,8 +91,7 @@ public class OpenNewRecordImp implements OpenNewRecord{
 			@Override
 		    public void actionPerformed(ActionEvent e) {
 				FindPatientImp panel= new FindPatientImp();
-				frame.setVisible(false);
-
+				panel.FindPatientcreateview();
 		      
 		    }
 		});
@@ -124,16 +126,14 @@ public class OpenNewRecordImp implements OpenNewRecord{
 		openrecord.addActionListener( new ActionListener(){
 			@Override
 		    public void actionPerformed(ActionEvent e) {
-				//frame.setVisible(false);
 				String id= getid.getText();
 				int idnum= Integer.parseInt(id);
-				//tha xrisimopoiso to service gia to patient
 				Patient pat=patientService.get(idnum);
 				if(pat!=null) {
 
 		        DiagnosiImp page =new DiagnosiImp();
 		        page.creatediagnosi(idnum);
-				frame.setVisible(false);}
+				}
 
 		      
 		    }

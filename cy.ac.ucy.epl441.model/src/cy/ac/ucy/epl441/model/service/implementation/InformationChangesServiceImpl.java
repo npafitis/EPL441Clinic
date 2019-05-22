@@ -11,6 +11,14 @@ import org.osgi.service.component.annotations.Component;
 import cy.ac.ucy.epl441.model.InformationChanges;
 import cy.ac.ucy.epl441.model.service.InformationChangeService;
 
+/**
+* An implementation of the informationChangesService which offers update, delete and retrieval from the database.
+* 
+* @author  npafitis
+* @version 1.0
+* @since   2019-05-21 
+*/
+
 @Component
 public class InformationChangesServiceImpl implements InformationChangeService {
 	private Connection con;
@@ -45,7 +53,13 @@ public class InformationChangesServiceImpl implements InformationChangeService {
 	public InformationChangesServiceImpl() {
 		super();
 	}
-
+	/**
+	* Retrieves the whole table from the database in an Arraylist
+	* 
+	* @author  npafitis
+	* @version 1.0
+	* @since   2019-05-21 
+	*/
 	@Override
 	public ArrayList<InformationChanges> getAll() {
 		String query = "SELECT * FROM InformationChange";

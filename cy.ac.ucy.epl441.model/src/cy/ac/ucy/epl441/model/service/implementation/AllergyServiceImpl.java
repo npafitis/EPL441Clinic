@@ -12,6 +12,14 @@ import cy.ac.ucy.epl441.model.Allergy;
 import cy.ac.ucy.epl441.model.Patient;
 import cy.ac.ucy.epl441.model.service.AllergyService;
 
+/**
+* An implementation of the allergyService which offers update, delete and retrieval from the database.
+* 
+* @author  npafitis
+* @version 1.0
+* @since   2019-05-21 
+*/
+
 @Component
 public class AllergyServiceImpl implements AllergyService  {
 	public AllergyServiceImpl(Connection con) {
@@ -40,6 +48,14 @@ public class AllergyServiceImpl implements AllergyService  {
 		super();
 	}
 
+	/**
+	* Retrieves the whole table from the database in an Arraylist
+	* 
+	* @author  npafitis
+	* @version 1.0
+	* @since   2019-05-21 
+	*/
+
 	@Override
 	public ArrayList<Allergy> getAll() {
 		String query = "SELECT * FROM Allergy";
@@ -60,6 +76,13 @@ public class AllergyServiceImpl implements AllergyService  {
 		}
 		return list;
 	}
+	/**
+	* Retrieves an instance from the database using the id.
+	* 
+	* @author  npafitis
+	* @version 1.0
+	* @since   2019-05-21 
+	*/
 
 	@Override
 	public Allergy get(int id) {
@@ -80,7 +103,13 @@ public class AllergyServiceImpl implements AllergyService  {
 		}
 		return null;
 	}
-
+	/**
+	* Updates an instance on the database.
+	* 
+	* @author  npafitis
+	* @version 1.0
+	* @since   2019-05-21 
+	*/
 	@Override
 	public void update(Allergy item) {
 		String query = 
@@ -94,7 +123,13 @@ public class AllergyServiceImpl implements AllergyService  {
 			e.printStackTrace();
 		}
 	}
-
+	/**
+	* Deletes an instance from the database using the id.
+	* 
+	* @author  npafitis
+	* @version 1.0
+	* @since   2019-05-21 
+	*/
 	@Override
 	public void delete(int id) {
 		String query  = 
@@ -107,7 +142,13 @@ public class AllergyServiceImpl implements AllergyService  {
 			e.printStackTrace();
 		}
 	}
-
+	/**
+	* Retrieves the patients for the given instance.
+	* 
+	* @author  npafitis
+	* @version 1.0
+	* @since   2019-05-21 
+	*/
 	@Override
 	public ArrayList<Patient> getPatients(Allergy allergy) {
 		PatientServiceImpl service = new PatientServiceImpl(con);

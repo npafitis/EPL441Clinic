@@ -31,6 +31,14 @@ import cy.ac.ucy.epl441.model.service.ConsultationService;
 import cy.ac.ucy.epl441.model.service.PatientService;
 import cy.ac.ucy.epl441.model.service.TreatmentService;
 
+/**
+* Interface of the ReportWindow
+*
+* @author  aphoti
+* @version 1.0
+* @since   2019-05-21 
+*/
+
 public interface ReportWindow{
 	public void create(String str1,String str2) throws ParseException;
 	

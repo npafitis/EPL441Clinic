@@ -34,6 +34,14 @@ import cy.ac.ucy.epl441.model.service.ConsultationService;
 import cy.ac.ucy.epl441.model.service.PatientService;
 import cy.ac.ucy.epl441.model.service.TreatmentService;
 
+/**
+* Component for the ReportWindow. Implements the ReportWindow interface. Generates the reports for the service department.
+* Takes as input the week for which the report will be displayed and the health center.
+* @author  aphoti
+* @version 1.0
+* @since   2019-05-21 
+*/
+
 @Component
 public class ReportWindowImpl extends JFrame implements ReportWindow{
 
@@ -163,7 +171,13 @@ public class ReportWindowImpl extends JFrame implements ReportWindow{
 		btnNewButton.setBounds(18, 12, 34, 29);
 		contentPane.add(btnNewButton);
 	}
-
+	/**
+	* Calls the treatmentService to get the information from the database 
+	*
+	* @author  aphoti
+	* @version 1.0
+	* @since   2019-05-21 
+	*/
 	private String getMedication() {
 	
 		String result="";
@@ -190,7 +204,13 @@ public class ReportWindowImpl extends JFrame implements ReportWindow{
 		}
 		return result;
 	}
-
+	/**
+	* Calls the patientService to get the information from the database 
+	*
+	* @author  aphoti
+	* @version 1.0
+	* @since   2019-05-21 
+	*/
 	private String getConditions() {
 		
 		String result="";
@@ -214,7 +234,13 @@ public class ReportWindowImpl extends JFrame implements ReportWindow{
 		}
 		return result;
 	}
-
+	/**
+	* Calls the consultationService to get the information from the database 
+	*
+	* @author  aphoti
+	* @version 1.0
+	* @since   2019-05-21 
+	*/
 	private String getPatientTotals() {
 	
 		String result="";

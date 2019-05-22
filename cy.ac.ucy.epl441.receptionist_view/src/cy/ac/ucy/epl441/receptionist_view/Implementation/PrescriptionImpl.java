@@ -14,6 +14,13 @@ import cy.ac.ucy.epl441.receptionist_view.Prescription;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/**
+* Prescription component is a pop-up window which confirms the repeated prescription.
+* @author  aphoti
+* @version 1.0
+* @since   2019-05-21 
+*/
+
 @Component
 public class PrescriptionImpl extends JInternalFrame implements Prescription{
 

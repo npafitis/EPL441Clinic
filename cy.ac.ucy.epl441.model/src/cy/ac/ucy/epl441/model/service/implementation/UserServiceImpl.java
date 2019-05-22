@@ -18,6 +18,15 @@ import cy.ac.ucy.epl441.model.service.ConsultationService;
 import cy.ac.ucy.epl441.model.service.UserService;
 import cy.ac.ucy.epl441.model.service.WarningService;
 
+
+/**
+* An implementation of the userService which offers update, delete and retrieval from the database.
+* 
+* @author  npafitis
+* @version 1.0
+* @since   2019-05-21 
+*/
+
 @Component
 public class UserServiceImpl implements UserService {
 	public UserServiceImpl(Connection con) {
@@ -46,7 +55,13 @@ public class UserServiceImpl implements UserService {
 		}
 		
 	}
-
+	/**
+	* Retrieves the whole table from the database in an Arraylist
+	* 
+	* @author  npafitis
+	* @version 1.0
+	* @since   2019-05-21 
+	*/
 	@Override
 	public ArrayList<User> getAll() {
 		String query = "SELECT * FROM User";

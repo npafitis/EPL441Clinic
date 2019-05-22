@@ -12,6 +12,14 @@ import org.osgi.service.component.annotations.Component;
 import cy.ac.ucy.epl441.model.Consultation;
 import cy.ac.ucy.epl441.model.service.ConsultationService;
 
+/**
+* An implementation of the consultationService which offers update, delete and retrieval from the database.
+* 
+* @author  npafitis
+* @version 1.0
+* @since   2019-05-21 
+*/
+
 @Component
 public class ConsultationServiceImpl implements ConsultationService {
 	private Connection con;
@@ -42,7 +50,13 @@ public class ConsultationServiceImpl implements ConsultationService {
 		}
 
 	}
-
+	/**
+	* Retrieves the whole table from the database in an Arraylist
+	* 
+	* @author  npafitis
+	* @version 1.0
+	* @since   2019-05-21 
+	*/
 	@Override
 	public ArrayList<Consultation> getAll() {
 		String query = "SELECT * FROM Consultation";

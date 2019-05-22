@@ -1,6 +1,13 @@
 package cy.ac.ucy.epl441.model;
 
 import java.sql.Date;
+/**
+* Object that represents a doctor's diagnosis.
+*
+* @author  npafitis
+* @version 1.0
+* @since   2019-05-21 
+*/
 
 public class Diagnosis {
 	private int diagnosisId;

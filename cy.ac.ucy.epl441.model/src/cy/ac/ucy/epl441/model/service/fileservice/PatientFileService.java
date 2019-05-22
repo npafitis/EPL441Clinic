@@ -31,6 +31,14 @@ import cy.ac.ucy.epl441.model.Treatment;
 import cy.ac.ucy.epl441.model.User;
 import cy.ac.ucy.epl441.model.service.PatientService;
 
+/**
+* Component that offers update and retrieval services for patient objects on the database.
+*
+* @author  npafitis
+* @version 1.0
+* @since   2019-05-21 
+*/
+
 public class PatientFileService implements PatientService{
 	private File patientfile;
 	private Document document;
@@ -91,7 +99,13 @@ public class PatientFileService implements PatientService{
 	
 		
 		
-		
+		/**
+		* Retrieves the whole table from the database in an ArrayList of patient objects
+		*
+		* @author  npafitis
+		* @version 1.0
+		* @since   2019-05-21 
+		*/	
 		
 	}
 
@@ -123,7 +137,13 @@ public class PatientFileService implements PatientService{
 			return patients;
 		
 	}
-
+	/**
+	* Retrieves a patient from the database using his id.
+	*
+	* @author  npafitis
+	* @version 1.0
+	* @since   2019-05-21 
+	*/
 	@Override
 	public Patient get(int id) {
 		// TODO Auto-generated method stub
@@ -140,7 +160,13 @@ public class PatientFileService implements PatientService{
 		return null;
 	}
 		
-
+	/**
+	* Updates a patient's record on the database.
+	*
+	* @author  npafitis
+	* @version 1.0
+	* @since   2019-05-21 
+	*/
 	@Override
 	public void update(Patient item) {
 		// TODO Auto-generated method stub
@@ -180,7 +206,13 @@ public class PatientFileService implements PatientService{
 		
 		
 	}
-
+	/**
+	* Deletes a patient's record on the database.
+	*
+	* @author  npafitis
+	* @version 1.0
+	* @since   2019-05-21 
+	*/
 	@Override
 	public void delete(int id) {
 		// TODO Auto-generated method stub

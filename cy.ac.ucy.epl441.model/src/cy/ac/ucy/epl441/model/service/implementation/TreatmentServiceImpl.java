@@ -12,6 +12,14 @@ import cy.ac.ucy.epl441.model.Allergy;
 import cy.ac.ucy.epl441.model.Treatment;
 import cy.ac.ucy.epl441.model.service.TreatmentService;
 
+/**
+* An implementation of the treatmentService which offers update, delete and retrieval from the database.
+* 
+* @author  npafitis
+* @version 1.0
+* @since   2019-05-21 
+*/
+
 @Component
 public class TreatmentServiceImpl implements TreatmentService {
 	public TreatmentServiceImpl(Connection con) {
@@ -43,10 +51,16 @@ public class TreatmentServiceImpl implements TreatmentService {
 	public TreatmentServiceImpl() {
 		super();
 	}
-
+	/**
+	* Retrieves the whole table from the database in an Arraylist
+	* 
+	* @author  npafitis
+	* @version 1.0
+	* @since   2019-05-21 
+	*/
 	@Override
 	public ArrayList<Treatment> getAll() {
-		String query = "SELECT * FROM Treatment";
+		String query = "SELECT * FROM Treatment WHERE ";
 		ArrayList<Treatment> list = new ArrayList<Treatment>();
 		try {
 			Statement stmt = con.createStatement();

@@ -12,6 +12,14 @@ import org.osgi.service.component.annotations.Component;
 import cy.ac.ucy.epl441.model.Incident;
 import cy.ac.ucy.epl441.model.service.IncidentService;
 
+/**
+* An implementation of the incidentService which offers update, delete and retrieval from the database.
+* 
+* @author  npafitis
+* @version 1.0
+* @since   2019-05-21 
+*/
+
 @Component
 public class IncidentServiceImpl implements IncidentService {
 	private Connection con;
@@ -40,7 +48,13 @@ public class IncidentServiceImpl implements IncidentService {
 	public IncidentServiceImpl() {
 		super();
 	}
-
+	/**
+	* Retrieves the whole table from the database in an Arraylist
+	* 
+	* @author  npafitis
+	* @version 1.0
+	* @since   2019-05-21 
+	*/
 	@Override
 	public ArrayList<Incident> getAll() {
 		String query = "SELECT * FROM Incident";

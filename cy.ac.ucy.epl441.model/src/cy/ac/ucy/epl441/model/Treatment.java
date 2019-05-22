@@ -2,6 +2,14 @@ package cy.ac.ucy.epl441.model;
 
 import java.sql.Date;
 
+/**
+* Object that represents a given treatment.
+*
+* @author  npafitis
+* @version 1.0
+* @since   2019-05-21 
+*/
+
 public class Treatment {
 	private int treatmentId;
 	private int patientId;

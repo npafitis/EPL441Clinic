@@ -15,6 +15,14 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
+/**
+* Interface of the SelectPatient component
+*
+* @author  aphoti
+* @version 1.0
+* @since   2019-05-21 
+*/
+
 public interface SelectPatient {
 	
 	public void create();

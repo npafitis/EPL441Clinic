@@ -17,7 +17,13 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import cy.ac.ucy.epl441.clinicalstaff.FindPatient;
-
+/**
+ * This class implements FindPatient interface
+ * and constructs the page for it 
+ * 
+ * @author Kyriaki Kekkou
+ *
+ */
 public class FindPatientImp implements FindPatient{
 		
 	
@@ -25,7 +31,11 @@ public class FindPatientImp implements FindPatient{
 		
 		
 	}
-
+	/**
+	 * This method create the graphical interface
+	 * of the FindPatient page
+	 * 
+	 */
 	@Override
 	public void FindPatientcreateview() {
 		// TODO Auto-generated method stub
@@ -68,8 +78,6 @@ public class FindPatientImp implements FindPatient{
 			@Override
 		    public void actionPerformed(ActionEvent e) {
 				
-				
-				OpenNewRecord panel= new OpenNewRecord();
 				frame.setVisible(false);
 
 		      
@@ -133,7 +141,7 @@ public class FindPatientImp implements FindPatient{
 		
 		
 		
-		JLabel results= new JLabel("edoo ta apotelesmata");
+		JLabel results= new JLabel("");
 		results.setBounds(900,400,800,550);
 		results.setHorizontalAlignment(SwingConstants.LEFT);
 		results.setVerticalAlignment(SwingConstants.TOP);

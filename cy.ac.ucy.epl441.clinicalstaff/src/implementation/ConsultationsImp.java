@@ -1,16 +1,34 @@
 package implementation;
+
+import cy.ac.ucy.epl441.clinicalstaff.Consultations;
+import cy.ac.ucy.epl441.clinicalstaff.Diagnosi;
+import cy.ac.ucy.epl441.clinicalstaff.OpenNewRecord;
+import cy.ac.ucy.epl441.clinicalstaff.Personalinfo;
+import cy.ac.ucy.epl441.clinicalstaff.TreatmentRecord;
+import cy.ac.ucy.epl441.model.Diagnosis;
+import cy.ac.ucy.epl441.model.Treatment;
+import cy.ac.ucy.epl441.model.service.ConsultationService;
+import cy.ac.ucy.epl441.model.service.DiagnosisService;
+import cy.ac.ucy.epl441.model.service.PatientService;
+import cy.ac.ucy.epl441.model.service.TreatmentService;
+
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Properties;
 
+import javax.sql.DataSource;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -18,62 +36,65 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.border.LineBorder;
+import javax.swing.border.MatteBorder;
 
-import cy.ac.ucy.epl441.clinicalstaff.TreatmentRecord;
-import cy.ac.ucy.epl441.model.Treatment;
-import cy.ac.ucy.epl441.model.service.DiagnosisService;
-import cy.ac.ucy.epl441.model.service.PatientService;
-import cy.ac.ucy.epl441.model.service.TreatmentService;
+import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.jdbc.DataSourceFactory;
 
 /**
- * This page implements the TreatmentRecord
- * and presents to the user all the treatments of the
- * patient
+ * This class implements the interface that constructs 
+ * the page for patient's consultations 
  * 
  * @author Kyriaki Kekkou
  *
  */
-public class TreatmentRecordImp implements TreatmentRecord {
+
+public class ConsultationsImp implements Consultations  {
 	
-	ArrayList<Treatment> tr = new ArrayList<>();
 	
 	
-	private TreatmentService treatmentservice;
+	ArrayList<Diagnosis> arraydiag = new ArrayList<>();
+	
+	
 	private int patientsid;
+	private TreatmentService treatmentservice;
 	private PatientService patientservice;
 	private DiagnosisService consultationservice;
-	
-	
-	
-	
+/*
+ * The constructor of the class that takes arguments
+ * that the class will use or transfer to others	
+ */
 	/**
-	 * This is the constructor of the class
-	 * that take arguments that are needed from the
-	 * page or from the forwarded pages
+	 * The constructor of the class that takes arguments
+	 * that the class will use or transfer to others	
 	 * 
-	 * @param patientsid patient's id
-	 * @param treatment treatment service tha page will use
-	 * @param patientservice patience service
-	 * @param consultation consultations service that will be forwarded
+	 * @param patientsid Patients id
+	 * @param treatmentservice a service that give us functionalities for treatment
+	 * @param patientservice a service that give us functionalities for patient
+	 * @param consultation a service that give us functionalities for consultation
 	 */
-	public TreatmentRecordImp(int patientsid, TreatmentService treatment,PatientService patientservice, DiagnosisService consultation) {
-		this.patientsid=patientsid;
-		this.treatmentservice=treatment;
-		this.patientservice=patientservice;
-		this.consultationservice=consultation;
-	}
+public ConsultationsImp(int patientsid, TreatmentService treatmentservice, PatientService patientservice, DiagnosisService consultation) {
+	this.patientsid=patientsid;
+	this.treatmentservice=treatmentservice;
+	this.patientservice=patientservice;
+	this.consultationservice=consultation;
+}
+	
+
 	
 	/**
-	 * This method creates the graphical interface
+	 * This method create the graphical interface
 	 * of the page
+	 * 
 	 */
-	public void createtreatmentrecord() {
+	@Override
+	public void createconsultations() {
+		// TODO Auto-generated method stub
 		
-		tr=treatmentservice.getAll();
-		
-				
+		arraydiag= consultationservice.getAll();
 		
 		GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		JPanel panel = new JPanel();
@@ -118,8 +139,6 @@ public class TreatmentRecordImp implements TreatmentRecord {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				frame.setVisible(false);
-				
-
 
 			}
 		});
@@ -130,21 +149,22 @@ public class TreatmentRecordImp implements TreatmentRecord {
 		ImageIcon cross = new ImageIcon("cross.png");
 		JButton treatment = new JButton(cross);
 		treatment.setBounds(630, 200, 50, 45);
-
-		JLabel rec = new JLabel("Consultation Records");
-		rec.setFont(new Font("Serif", Font.PLAIN, height / 45));
-
-		ImageIcon consult = new ImageIcon("record.png");
-		JButton consultation = new JButton(consult);
-		consultation.addActionListener(new ActionListener() {
+		treatment.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ConsultationsImp consultations= new ConsultationsImp(patientsid, treatmentservice, patientservice, consultationservice);
-				consultations.createconsultations();
+				TreatmentRecordImp treatm=new TreatmentRecordImp(patientsid, treatmentservice, patientservice, consultationservice);
+				treatm.createtreatmentrecord();
 				frame.setVisible(false);
 
 			}
 		});
+
+		JLabel rec = new JLabel("Consultation Records");
+		rec.setFont(new Font("Serif", Font.PLAIN, height / 45));
+		
+
+		ImageIcon consult = new ImageIcon("record.png");
+		JButton consultation = new JButton(consult);
 
 		JLabel patient = new JLabel("Patient Information");
 		patient.setFont(new Font("Serif", Font.PLAIN, height / 45));
@@ -154,7 +174,7 @@ public class TreatmentRecordImp implements TreatmentRecord {
 		patientinfo.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				PersonalInfoImp info= new PersonalInfoImp(patientsid, treatmentservice, patientservice, consultationservice);
+				PersonalInfoImp info = new PersonalInfoImp(patientsid, treatmentservice,  patientservice,consultationservice);
 				info.createpersonalinfo();
 				frame.setVisible(false);
 
@@ -162,6 +182,7 @@ public class TreatmentRecordImp implements TreatmentRecord {
 		});
 
 		
+
 		JLabel patientid = new JLabel("Patient ID:");
 		patientid.setFont(new Font("Serif", Font.PLAIN, height / 30));
 
@@ -186,6 +207,7 @@ public class TreatmentRecordImp implements TreatmentRecord {
 		panel.add(treatment, brest);
 		panel.add(patientinfo, brest);
 		panel.add(consultation, lastbrest);
+	
 		GridBagConstraints forrow = new GridBagConstraints();
 		forrow.gridwidth = GridBagConstraints.REMAINDER;
 
@@ -195,6 +217,7 @@ public class TreatmentRecordImp implements TreatmentRecord {
 
 		panel.add(ho, inforest);
 		panel.add(treat);
+		panel.add(patient);
 		panel.add(rec,forrow);
 		panel.add(patientid);
 		panel.add(id, rest);
@@ -213,48 +236,74 @@ public class TreatmentRecordImp implements TreatmentRecord {
 		int i;
 		JPanel insert=new JPanel();
 		JLabel date;
-		JTextArea drugs;
+		JTextArea getdiagnosis;
+		JTextArea getdetails;
+		JTextArea getcomments;
+		JLabel diag;
+		JLabel det;
+		JLabel com;
+		
+		
 		GridBagConstraints forrow2 = new GridBagConstraints();
 		forrow2.gridwidth = GridBagConstraints.REMAINDER;
-		forrow2.insets = new Insets(0, 0, 55, 1670);
+		forrow2.insets = new Insets(0, 0, 15, 1670);
 
 		GridBagConstraints forrow3 = new GridBagConstraints();
 		forrow3.gridwidth = GridBagConstraints.REMAINDER;
-		forrow3.insets = new Insets(0, 50, 55, 50);
-		forrow3.weightx=50;		
+		forrow3.insets = new Insets(0, 0, 45, 50);
+		forrow3.weightx=50;		//forrow3.weighty=50;
 		forrow3.fill = GridBagConstraints.HORIZONTAL;
-		forrow3.gridx = 0;
 		
+		GridBagConstraints lept = new GridBagConstraints();
+		lept.insets = new Insets(5, 10, 45, 5);
 		 
 
-		for (i = 0; i < tr.size(); i++) {
-
-			if(tr.get(i).getPatientId()==patientsid) {
-
-			
+		for (i = 0; i < arraydiag.size(); i++) {
+			if(arraydiag.get(i).getPatientId()==patientsid) {
 			insert=new JPanel();
 			insert.setOpaque(true);
 			insert.setBackground(Color.white);
 			insert.setLayout(new GridBagLayout());
 			insert.setBorder(LineBorder.createBlackLineBorder());
-			insert.setPreferredSize(new Dimension(1900, 150));
+			insert.setPreferredSize(new Dimension(1900, 300));
 			
-			date = new JLabel(tr.get(i).getDate().toString());
+			date = new JLabel(//arraydiag.get(i).getDate
+					);
 			date.setFont(new Font("Serif", Font.PLAIN, height / 35));
+			diag= new JLabel("Diagnosis:");
+			diag.setFont(new Font("Serif", Font.PLAIN, height / 45));
+			det = new JLabel("Details:    ");
+			det.setFont(new Font("Serif", Font.PLAIN, height / 45));
+			com =new JLabel("Comments:");
+			com.setFont(new Font("Serif", Font.PLAIN, height / 45));
+						
+			getdiagnosis = new JTextArea(60, 450);
+			getdiagnosis.setEditable(false);
+			getdiagnosis.setText(arraydiag.get(i).getComments());
+			getdiagnosis.setBackground(Color.LIGHT_GRAY);
+			getdiagnosis.setFont(new Font("Serif", Font.PLAIN, height / 40));
+			
+			getdetails = new JTextArea(60, 450);
+			getdetails.setEditable(false);
+			getdetails.setText(arraydiag.get(i).getDetails());
+			getdetails.setBackground(Color.LIGHT_GRAY);
+			getdetails.setFont(new Font("Serif", Font.PLAIN, height / 40));
+			
+			getcomments = new JTextArea(60, 450);
+			getcomments.setEditable(false);
+			getcomments.setText("");
+			getcomments.setBackground(Color.LIGHT_GRAY);
+			getcomments.setFont(new Font("Serif", Font.PLAIN, height / 40));
 			
 			
-			
-			drugs = new JTextArea(60, 500);
-		
-			drugs.setText(tr.get(i).getDescription());
-
-		    
-
-			drugs.setBackground(Color.LIGHT_GRAY);
-			drugs.setFont(new Font("Serif", Font.PLAIN, height / 40));
-
 			insert.add(date,forrow2);
-			insert.add(drugs,forrow3);
+			insert.add(diag,lept);
+			insert.add(getdiagnosis,forrow3);
+			insert.add(det,lept);
+			insert.add(getdetails,forrow3);
+			insert.add(com,lept);
+			insert.add(getcomments,forrow3);
+
 			testing.add(insert,fpanel);
 			}
 
@@ -273,12 +322,13 @@ public class TreatmentRecordImp implements TreatmentRecord {
 		frame.add(panel, forpanel);
 		frame.setVisible(true);
 
+		
+		
+		
+		
+		
+		
+		
 	}
 
 }
-
-
-
-
-
-
