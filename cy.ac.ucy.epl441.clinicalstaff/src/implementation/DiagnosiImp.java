@@ -27,6 +27,7 @@ import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.jdbc.DataSourceFactory;
 
 import cy.ac.ucy.epl441.clinicalstaff.Diagnosi;
@@ -48,16 +49,16 @@ import cy.ac.ucy.epl441.model.service.TreatmentService;
 public class DiagnosiImp implements Diagnosi {
 	// @Reference
 	private DataSourceFactory dsFactory;
-//	@Reference
+	//@Reference
 	private PatientService patientService;
-//	@Reference
+	//@Reference
 	private DiagnosisService diagnosisservice;
-//	@Reference
+	//@Reference
 	private TreatmentService treatmentservice;
 
-//	@Reference 
+	@Reference 
 	private AllergyService allergyservice;
-//@Reference
+	//@Reference
 	private DiagnosisService consultationservice;
 	private Connection con;
 
@@ -290,15 +291,18 @@ public class DiagnosiImp implements Diagnosi {
 		previous.setBounds(350, 395, 355, 80);
 
 		ArrayList<Diagnosis> di = patientService.getDiagnosis(patientsid);
-		// otan tha vali t diagnosis o nikolas na t valo
-		// Date getdate=di.get(0).getDate;
-		/*
-		 * for(int i=0; i<di.size(); i++) { if(getdate.
-		 * 
-		 * }
-		 */
+		 Date getdate=di.get(0).getDiagnosisDate();
+		
+		  for(int i=0; i<di.size(); i++) { 
+			  if(di.get(i).getDiagnosisDate().compareTo(getdate)>0) {
+				  getdate=di.get(i).getDiagnosisDate();
+				  
+			  }
+		  
+		  }
+		 
 
-		JLabel previousdate = new JLabel("");
+		JLabel previousdate = new JLabel(getdate.toString());
 		previousdate.setFont(new Font("Serif", Font.PLAIN, height / 35));
 		previousdate.setForeground(Color.RED);
 		previousdate.setBounds(620, 395, 355, 80);

@@ -267,8 +267,7 @@ public ConsultationsImp(int patientsid, TreatmentService treatmentservice, Patie
 			insert.setBorder(LineBorder.createBlackLineBorder());
 			insert.setPreferredSize(new Dimension(1900, 300));
 			
-			date = new JLabel(//arraydiag.get(i).getDate
-					);
+			date = new JLabel(arraydiag.get(i).getDiagnosisDate().toString());
 			date.setFont(new Font("Serif", Font.PLAIN, height / 35));
 			diag= new JLabel("Diagnosis:");
 			diag.setFont(new Font("Serif", Font.PLAIN, height / 45));
