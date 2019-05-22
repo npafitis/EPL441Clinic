@@ -44,6 +44,13 @@ import javax.swing.border.MatteBorder;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.jdbc.DataSourceFactory;
 
+/**
+ * This class implements the interface that constructs 
+ * the page for patient's consultations 
+ * 
+ * @author Kyriaki Kekkou
+ *
+ */
 
 public class ConsultationsImp implements Consultations  {
 	
@@ -56,7 +63,19 @@ public class ConsultationsImp implements Consultations  {
 	private TreatmentService treatmentservice;
 	private PatientService patientservice;
 	private DiagnosisService consultationservice;
-	
+/*
+ * The constructor of the class that takes arguments
+ * that the class will use or transfer to others	
+ */
+	/**
+	 * The constructor of the class that takes arguments
+	 * that the class will use or transfer to others	
+	 * 
+	 * @param patientsid Patients id
+	 * @param treatmentservice a service that give us functionalities for treatment
+	 * @param patientservice a service that give us functionalities for patient
+	 * @param consultation a service that give us functionalities for consultation
+	 */
 public ConsultationsImp(int patientsid, TreatmentService treatmentservice, PatientService patientservice, DiagnosisService consultation) {
 	this.patientsid=patientsid;
 	this.treatmentservice=treatmentservice;
@@ -66,8 +85,11 @@ public ConsultationsImp(int patientsid, TreatmentService treatmentservice, Patie
 	
 
 	
-	
-
+	/**
+	 * This method create the graphical interface
+	 * of the page
+	 * 
+	 */
 	@Override
 	public void createconsultations() {
 		// TODO Auto-generated method stub

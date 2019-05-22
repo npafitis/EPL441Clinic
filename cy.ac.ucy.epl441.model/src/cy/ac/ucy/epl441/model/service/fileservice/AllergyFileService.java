@@ -26,11 +26,9 @@ import cy.ac.ucy.epl441.model.Patient;
 import cy.ac.ucy.epl441.model.service.AllergyService;
 
 /**
-* Component that offers update and retrieval services for allergy objects on the database.
+* Component that reads and write information about allergies from an xml file.
 *
-* @author  npafitis
-* @version 1.0
-* @since   2019-05-21 
+* 
 */
 
 @Component
@@ -87,7 +85,7 @@ public void create(Allergy item) {
 	
 }
 /**
-* Retrieves the whole table from the database in an ArrayList of allergy objects
+* Retrieves the whole table from the xml in an ArrayList of allergy objects
 *
 * @author  npafitis
 * @version 1.0
@@ -102,7 +100,6 @@ public ArrayList<Allergy> getAll() {
     int i=0;
     Allergy temp;
     String name;
-    String sid;
     int id;
     for(i=0; i<all.getLength(); i++) {
     	 Node node = all.item(i);
@@ -120,7 +117,7 @@ public ArrayList<Allergy> getAll() {
 
 
 /**
-* Retrieves an allergy object from the database using the id.
+* Retrieves an allergy object from the xml file using the id.
 *
 * @author  npafitis
 * @version 1.0
@@ -144,11 +141,9 @@ public Allergy get(int id) {
 }
 
 /**
-* Used to update an allergy object.
+* Used to update an allergy object in the xml file.
 *
-* @author  npafitis
-* @version 1.0
-* @since   2019-05-21 
+*
 */
 
 @Override
@@ -187,11 +182,9 @@ public void update(Allergy item) {
 }
 
 /**
-* Used to delete an allergy element.
+* Used to delete an allergy element from the xml file
 *
-* @author  npafitis
-* @version 1.0
-* @since   2019-05-21 
+*
 */
 
 @Override
@@ -228,11 +221,9 @@ public void delete(int id) {
 }
 
 /**
-* Retrieves the patient of a given allergy from the database in an ArrayList of patient objects
+* Retrieves the patients of a given allergy from the xml file and returns an ArrayList of patient objects
 *
-* @author  npafitis
-* @version 1.0
-* @since   2019-05-21 
+* 
 */
 
 @Override

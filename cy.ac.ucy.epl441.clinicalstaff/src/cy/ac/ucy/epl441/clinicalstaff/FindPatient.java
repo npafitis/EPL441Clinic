@@ -14,7 +14,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-
+/**
+ * This is the interface for the page that finds patients
+ * 
+ * @author Kyriaki Kekkou
+ *
+ */
 public interface FindPatient {
 	public void FindPatientcreateview();
 
