@@ -1,4 +1,4 @@
-package implementation;
+package cy.ac.ucy.epl441.clinical_staff.implementation;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-import cy.ac.ucy.epl441.clinicalstaff.FindPatient;
+import cy.ac.ucy.epl441.clinical_staff.*;
 /**
  * This class implements FindPatient interface
  * and constructs the page for it 

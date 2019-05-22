@@ -1,4 +1,4 @@
-package implementation;
+package cy.ac.ucy.epl441.clinical_staff.implementation;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GraphicsEnvironment;
@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import cy.ac.ucy.epl441.clinicalstaff.Personalinfo;
+import cy.ac.ucy.epl441.clinical_staff.*;
 import cy.ac.ucy.epl441.model.Allergy;
 import cy.ac.ucy.epl441.model.Patient;
 import cy.ac.ucy.epl441.model.Relative;

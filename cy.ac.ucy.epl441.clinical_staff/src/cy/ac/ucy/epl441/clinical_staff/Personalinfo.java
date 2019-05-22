@@ -1,4 +1,4 @@
-package cy.ac.ucy.epl441.clinicalstaff;
+package cy.ac.ucy.epl441.clinical_staff;
 
 
 

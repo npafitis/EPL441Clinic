@@ -1,4 +1,4 @@
-package implementation;
+package cy.ac.ucy.epl441.clinical_staff.implementation;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -21,7 +21,7 @@ import javax.swing.JTextArea;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.border.LineBorder;
 
-import cy.ac.ucy.epl441.clinicalstaff.TreatmentRecord;
+import cy.ac.ucy.epl441.clinical_staff.*;
 import cy.ac.ucy.epl441.model.Treatment;
 import cy.ac.ucy.epl441.model.service.DiagnosisService;
 import cy.ac.ucy.epl441.model.service.PatientService;

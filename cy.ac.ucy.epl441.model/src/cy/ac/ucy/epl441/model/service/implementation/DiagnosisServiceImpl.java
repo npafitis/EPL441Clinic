@@ -20,7 +20,7 @@ import cy.ac.ucy.epl441.model.service.DiagnosisService;
 * @version 1.0
 * @since   2019-05-21 
 */
-
+@Component
 public class DiagnosisServiceImpl implements DiagnosisService {
 	private Connection con;
 	

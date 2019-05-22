@@ -1,5 +1,0 @@
--buildpath: \
-	osgi.cmpn,\
-	osgi.core,\
-	osgi.annotation,\
-	cy.ac.ucy.epl441.model;version=latest

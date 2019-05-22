@@ -1,7 +1,4 @@
-package cy.ac.ucy.epl441.clinicalstaff;
-
-import cy.ac.ucy.epl441.model.service.PatientService;
-import cy.ac.ucy.epl441.model.service.TreatmentService;
+package cy.ac.ucy.epl441.clinical_staff;
 /**
  * This interface let us create the page for the treatment's records
  * 

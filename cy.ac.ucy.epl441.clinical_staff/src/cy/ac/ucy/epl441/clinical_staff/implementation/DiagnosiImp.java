@@ -1,4 +1,4 @@
-package implementation;
+package cy.ac.ucy.epl441.clinical_staff.implementation;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -27,9 +27,10 @@ import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.jdbc.DataSourceFactory;
 
-import cy.ac.ucy.epl441.clinicalstaff.Diagnosi;
+import cy.ac.ucy.epl441.clinical_staff.*;
 import cy.ac.ucy.epl441.model.Diagnosis;
 import cy.ac.ucy.epl441.model.Patient;
 import cy.ac.ucy.epl441.model.Treatment;
@@ -46,18 +47,19 @@ import cy.ac.ucy.epl441.model.service.TreatmentService;
  */
 @Component
 public class DiagnosiImp implements Diagnosi {
-	// @Reference
+	
+	@Reference
 	private DataSourceFactory dsFactory;
-//	@Reference
+	@Reference
 	private PatientService patientService;
-//	@Reference
+	@Reference
 	private DiagnosisService diagnosisservice;
-//	@Reference
+	@Reference
 	private TreatmentService treatmentservice;
 
-//	@Reference 
+	@Reference 
 	private AllergyService allergyservice;
-//@Reference
+	@Reference
 	private DiagnosisService consultationservice;
 	private Connection con;
 
@@ -314,7 +316,7 @@ public class DiagnosiImp implements Diagnosi {
 				String diagnosis = diagnspace.getText();
 				String details = detspace.getText();
 				// String comments= commspace.getText();
-				diagnosisservice.create(new Diagnosis(patientsid, diagnosis, details));
+				diagnosisservice.create(new Diagnosis(patientsid, diagnosis, details, new java.sql.Date(System.currentTimeMillis())));
 
 			}
 		});

@@ -1,10 +1,6 @@
-package implementation;
+package cy.ac.ucy.epl441.clinical_staff.implementation;
 
-import cy.ac.ucy.epl441.clinicalstaff.Consultations;
-import cy.ac.ucy.epl441.clinicalstaff.Diagnosi;
-import cy.ac.ucy.epl441.clinicalstaff.OpenNewRecord;
-import cy.ac.ucy.epl441.clinicalstaff.Personalinfo;
-import cy.ac.ucy.epl441.clinicalstaff.TreatmentRecord;
+import cy.ac.ucy.epl441.clinical_staff.*;
 import cy.ac.ucy.epl441.model.Diagnosis;
 import cy.ac.ucy.epl441.model.Treatment;
 import cy.ac.ucy.epl441.model.service.ConsultationService;
