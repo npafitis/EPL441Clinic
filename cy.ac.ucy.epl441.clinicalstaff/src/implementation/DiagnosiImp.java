@@ -314,7 +314,7 @@ public class DiagnosiImp implements Diagnosi {
 				String diagnosis = diagnspace.getText();
 				String details = detspace.getText();
 				// String comments= commspace.getText();
-				diagnosisservice.create(new Diagnosis(patientsid, diagnosis, details));
+				diagnosisservice.create(new Diagnosis(patientsid, diagnosis, details, (java.sql.Date) new Date()));
 
 			}
 		});
