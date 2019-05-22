@@ -26,6 +26,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 
+import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.jdbc.DataSourceFactory;
@@ -61,9 +62,13 @@ public class DiagnosiImp implements Diagnosi {
 	private AllergyService allergyservice;
 	@Reference
 	private DiagnosisService consultationservice;
+	
 	private Connection con;
 
-	{
+	
+	@Activate
+	private void activate() {
+		System.out.println("Activated DiagnosisView");
 		Properties properties = new Properties();
 		properties.put(DataSourceFactory.JDBC_URL, "jdbc:mysql://localhost:33061/homestead");
 		properties.put(DataSourceFactory.JDBC_USER, "homestead");

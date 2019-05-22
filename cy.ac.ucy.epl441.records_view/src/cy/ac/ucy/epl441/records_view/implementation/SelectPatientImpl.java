@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
@@ -38,7 +39,10 @@ public class SelectPatientImpl extends JFrame implements SelectPatient {
 	/**
 	 * Launch the application.
 	 */
-	
+	@Activate
+	private void activate() {
+		System.out.println("Activated SelectPatient");
+	}
 	
 	@Override
 	public void create() {

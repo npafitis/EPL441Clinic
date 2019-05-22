@@ -28,6 +28,7 @@ import javax.swing.JComboBox;
 import javax.swing.JTextPane;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Properties;
 import java.awt.event.ActionEvent;
@@ -49,9 +50,7 @@ public class RecordOptionsImpl extends JFrame implements RecordOptions {
 	private JTextField changenumber;
 	public Patient p;
 	
-//	@Reference
-//	private SelectPatient sp;
-	
+
 	@Reference
 	private DataSourceFactory dsFactory;
 	
@@ -64,21 +63,21 @@ public class RecordOptionsImpl extends JFrame implements RecordOptions {
 	@Activate
 	private void activate() {
 		System.out.println("Activated RecordOptions");
-//		Properties properties = new Properties();
-//		properties.put(DataSourceFactory.JDBC_URL, "jdbc:mysql://localhost:33061/homestead");
-//		properties.put(DataSourceFactory.JDBC_USER, "homestead");
-//		properties.put(DataSourceFactory.JDBC_PASSWORD, "secret");
-//
-//
-//		try {
-//			DataSource ds = this.dsFactory.createDataSource(properties);
-//			Connection con = ds.getConnection();
-//			this.changeService.setConnection(con);
-//			this.patientService.setConnection(con);
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}	
+		Properties properties = new Properties();
+		properties.put(DataSourceFactory.JDBC_URL, "jdbc:mysql://localhost:33061/homestead");
+		properties.put(DataSourceFactory.JDBC_USER, "homestead");
+		properties.put(DataSourceFactory.JDBC_PASSWORD, "secret");
+
+
+		try {
+			DataSource ds = this.dsFactory.createDataSource(properties);
+			Connection con = ds.getConnection();
+			this.changeService.setConnection(con);
+			this.patientService.setConnection(con);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
 	}
 	
 

@@ -9,9 +9,11 @@ import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 
 import cy.ac.ucy.epl441.model.Patient;
-import cy.ac.ucy.epl441.receptionist_view.PatientInfo;
+import cy.ac.ucy.epl441.receptionist_view.*;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -23,7 +25,7 @@ import java.awt.event.ActionEvent;
 */
 
 @Component
-public class PatientInfoImpl extends JInternalFrame implements PatientInfo {
+public class PatientInfoImpl extends JFrame implements PatientInfo {
 
 	@Activate
 	private void activate() {
@@ -34,6 +36,7 @@ public class PatientInfoImpl extends JInternalFrame implements PatientInfo {
 	 */
 		@Override
 	public void create(Patient p) {
+		System.out.println("Hello from create");
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(null);
 		
@@ -85,7 +88,9 @@ public class PatientInfoImpl extends JInternalFrame implements PatientInfo {
 		});
 		btnClose.setBounds(111, 211, 117, 29);
 		getContentPane().add(btnClose);
-
 	}
+		
+		
 	public PatientInfoImpl(){}
+
 }

@@ -26,7 +26,8 @@ public class PrescriptionImpl extends JInternalFrame implements Prescription{
 
 	@Activate
 	private void activate() {
-		System.out.println("Activated Prescription");}
+		System.out.println("Activated Prescription");
+		}
 
 		public PrescriptionImpl(){}
 	/**

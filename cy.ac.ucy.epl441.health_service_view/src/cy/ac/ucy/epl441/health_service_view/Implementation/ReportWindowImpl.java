@@ -61,10 +61,10 @@ public class ReportWindowImpl extends JFrame implements ReportWindow{
 	@Reference
 	private ConsultationService consultationService;
 	
-//	@Reference
-//	private SelectReport sr;
 	
-	{
+	@Activate
+	private void activate() {
+		System.out.println("Activated RecordOptions");
 		Properties properties = new Properties();
 		properties.put(DataSourceFactory.JDBC_URL, "jdbc:mysql://localhost:33061/homestead");
 		properties.put(DataSourceFactory.JDBC_USER, "homestead");
@@ -78,12 +78,8 @@ public class ReportWindowImpl extends JFrame implements ReportWindow{
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}	
 	}
-	
-	@Activate
-	private void activate() {
-		System.out.println("Activated RecordOptions");}
 	/**
 	 * Create the frame.
 	 * @throws ParseException 

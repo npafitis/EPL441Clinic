@@ -20,10 +20,7 @@ import cy.ac.ucy.epl441.model.User;
 import cy.ac.ucy.epl441.model.service.ConsultationService;
 import cy.ac.ucy.epl441.model.service.PatientService;
 import cy.ac.ucy.epl441.model.service.UserService;
-import cy.ac.ucy.epl441.receptionist_view.AppointmentDone;
-import cy.ac.ucy.epl441.receptionist_view.Calendar;
-import cy.ac.ucy.epl441.receptionist_view.PatientInfo;
-import cy.ac.ucy.epl441.receptionist_view.Prescription;
+import cy.ac.ucy.epl441.receptionist_view.*;
 
 import javax.swing.JLabel;
 import javax.swing.JTabbedPane;
@@ -86,9 +83,7 @@ public class CalendarImpl extends JFrame implements Calendar{
 	
 	@Activate
 	private void activate() {
-		System.out.println("Activated Calendar");}
-	
-	{
+		System.out.println("Activated Calendar");
 		Properties properties = new Properties();
 		properties.put(DataSourceFactory.JDBC_URL, "jdbc:mysql://localhost:33061/homestead");
 		properties.put(DataSourceFactory.JDBC_USER, "homestead");
@@ -104,6 +99,10 @@ public class CalendarImpl extends JFrame implements Calendar{
 			e.printStackTrace();
 		}
 	}
+	
+	
+		
+	
 
 	/**
 	 * Create the frame.
@@ -269,6 +268,7 @@ public class CalendarImpl extends JFrame implements Calendar{
 		JButton btnNewButton_2 = new JButton("View Record");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				System.out.println("Button Clicked.");
 				int patientId = Integer.parseInt(patid.getText());
 				Patient p=patientService.get(patientId);
 				pi.create(p);

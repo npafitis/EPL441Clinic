@@ -4,8 +4,6 @@ import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
-import cy.ac.ucy.epl441.records_view.SelectPatient;
-
 /**
 * Component that starts the application 
 *
@@ -18,13 +16,13 @@ import cy.ac.ucy.epl441.records_view.SelectPatient;
 public class Application {
 	
 	@Reference
-	private SelectPatient sp;
+	private Login login;
 	
 	
 	@Activate
 	private void activate() {
 		System.out.println("Hello from Application");
-		sp.create();
-		sp.setVisible(true);
+		login.create();
+//		login.setVisible(true);
 	}
 }

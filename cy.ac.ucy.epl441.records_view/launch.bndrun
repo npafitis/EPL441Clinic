@@ -8,21 +8,5 @@
 	osgi.console=,\
 	osgi.console.enable.builtin=false
 
--runbundles: \
-	com.mysql.cj;version='[8.0.16,8.0.17)',\
-	cy.ac.ucy.epl441.model;version=snapshot,\
-	cy.ac.ucy.epl441.mysql-dsf;version=snapshot,\
-	cy.ac.ucy.epl441.records_view;version=snapshot,\
-	org.apache.felix.gogo.command;version='[1.0.2,1.0.3)',\
-	org.apache.felix.gogo.runtime;version='[1.0.10,1.0.11)',\
-	org.apache.felix.gogo.shell;version='[1.0.0,1.0.1)',\
-	org.apache.felix.scr;version='[2.1.10,2.1.11)',\
-	org.osgi.service.jdbc;version='[1.0.0,1.0.1)'
 
--runrequires: \
-	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.shell)',\
-	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.command)',\
-	bnd.identity;version='latest';id='cy.ac.ucy.epl441.mysql-dsf',\
-	bnd.identity;version='latest';id='cy.ac.ucy.epl441.model',\
-	bnd.identity;version='latest';id='cy.ac.ucy.epl441.records_view'
 -runee: JavaSE-1.8

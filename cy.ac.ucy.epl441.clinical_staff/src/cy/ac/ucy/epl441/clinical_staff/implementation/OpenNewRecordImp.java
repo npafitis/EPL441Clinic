@@ -38,30 +38,36 @@ import cy.ac.ucy.epl441.model.service.PatientService;
 public class OpenNewRecordImp implements OpenNewRecord{
 	@Reference
 	private DataSourceFactory dsFactory;
+	
 	@Reference
 	private PatientService patientService;
 	
-	{
-	Properties properties = new Properties();
-	properties.put(DataSourceFactory.JDBC_URL, "jdbc:mysql://localhost:33061/homestead");
-	properties.put(DataSourceFactory.JDBC_USER, "homestead");
-	properties.put(DataSourceFactory.JDBC_PASSWORD, "secret");
-	try {
-		DataSource ds = dsFactory.createDataSource(properties);
-		patientService.setConnection(ds.getConnection());
-		
-	} catch (SQLException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
+	@Reference
+	private Diagnosi diagnosi;
+	
+
+	@Activate
+	private void activate() {
+		System.out.println("Activated RecordsView");
+		Properties properties = new Properties();
+		properties.put(DataSourceFactory.JDBC_URL, "jdbc:mysql://localhost:33061/homestead");
+		properties.put(DataSourceFactory.JDBC_USER, "homestead");
+		properties.put(DataSourceFactory.JDBC_PASSWORD, "secret");
+		try {
+			DataSource ds = dsFactory.createDataSource(properties);
+			patientService.setConnection(ds.getConnection());
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
-}
 	/**
 	 * This method create the graphical interface
 	 * of the OpenNewRecord page and it's responsible
 	 * to manage the user's inputs
 	 * 
 	 */
-	@Activate
 	public void OpenNewRecordcreate() {
 		
 		GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -131,8 +137,8 @@ public class OpenNewRecordImp implements OpenNewRecord{
 				Patient pat=patientService.get(idnum);
 				if(pat!=null) {
 
-		        DiagnosiImp page =new DiagnosiImp();
-		        page.creatediagnosi(idnum);
+//					DiagnosiImp page =new DiagnosiImp();
+					diagnosi.creatediagnosi(pat.getPatientId());
 				}
 
 		      

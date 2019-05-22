@@ -10,11 +10,13 @@ Bundle-Version: 1.0.0.${tstamp}
 	org.eclipse.osgi,\
 	cy.ac.ucy.epl441.health_service_view;version=latest,\
 	cy.ac.ucy.epl441.receptionist_view;version=latest,\
-	cy.ac.ucy.epl441.records_view;version=latest
+	cy.ac.ucy.epl441.records_view;version=latest,\
+	cy.ac.ucy.epl441.clinical_staff;version=latest
 
 javac.source: 1.8
 javac.target: 1.8
 
 -includeresource: resources
--privatepackage: cy.ac.ucy.epl441.clinic
 Import-Package: *
+-privatepackage: cy.ac.ucy.epl441.clinic.implementation
+Export-Package: cy.ac.ucy.epl441.clinic

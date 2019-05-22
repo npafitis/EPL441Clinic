@@ -26,7 +26,8 @@ public class AppointmentDoneImpl extends JInternalFrame implements AppointmentDo
 
 	@Activate
 	private void activate() {
-		System.out.println("Activated AppointmentDone");}
+		System.out.println("Activated AppointmentDone");
+		}
 
 	/**
 	 * Create the frame.
