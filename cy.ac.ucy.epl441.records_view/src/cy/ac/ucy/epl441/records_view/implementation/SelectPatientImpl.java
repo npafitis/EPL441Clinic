@@ -31,18 +31,7 @@ public class SelectPatientImpl extends JFrame implements SelectPatient {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					SelectPatientImpl frame = new SelectPatientImpl();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 	
 	@Override
 	public void create() {

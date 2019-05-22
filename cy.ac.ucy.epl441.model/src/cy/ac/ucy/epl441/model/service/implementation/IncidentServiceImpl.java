@@ -24,7 +24,7 @@ public class IncidentServiceImpl implements IncidentService {
 	@Override
 	public void create(Incident item) {
 		String query = 	"INSERT INTO Incident ( patientId, incidentDate, description)\n" + 
-				String.format("VALUES (%d, %s, %s)",
+				String.format("VALUES (%d, \"%s\", \"%s\")",
 						item.getPatientId(),
 						item.getDate().toString(),
 						item.getDescription());
@@ -64,7 +64,7 @@ public class IncidentServiceImpl implements IncidentService {
 
 	@Override
 	public Incident get(int id) {
-		String query = "SELECT * FROM Incident Where incident = "+id;
+		String query = "SELECT * FROM Incident Where incidentId = "+id;
 		try {
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
@@ -87,7 +87,7 @@ public class IncidentServiceImpl implements IncidentService {
 		String query = 
 				"UPDATE Incident" +
 				"Set 	incidentDate = " + item.getDate() +
-				"		description = " + item.getDescription() +
+				"		description = \"" + item.getDescription() +"\""+
 				"Where incidentId = " + item.getIncidentId();
 		try {
 			Statement stmt = con.createStatement();

@@ -1,4 +1,4 @@
-package cy.ac.ucy.epl441.health_service_view;
+package cy.ac.ucy.epl441.health_service_view.Implementation;
 
 import java.awt.EventQueue;
 import java.sql.Timestamp;
@@ -7,7 +7,12 @@ import java.text.ParseException;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
+
+import cy.ac.ucy.epl441.health_service_view.ReportWindow;
+import cy.ac.ucy.epl441.health_service_view.SelectReport;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -31,8 +36,7 @@ public class SelectReportImpl extends JFrame implements SelectReport{
 	/**
 	 * Create the application.
 	 */
-	public SelectReport() {
-	}
+	
 
 	/**
 	 * Initialize the contents of the frame.
@@ -134,7 +138,7 @@ public class SelectReportImpl extends JFrame implements SelectReport{
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				frame.dispose();
+//				frame.dispose();
 				rw.setVisible(true);
 			}
 		});

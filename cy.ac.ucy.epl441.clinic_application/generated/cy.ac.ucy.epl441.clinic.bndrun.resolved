@@ -1,6 +1,0 @@
-org.apache.felix.configadmin;version='[1.9.8,1.9.9)';resolution=file:/home/nikolas/.m2/repository/org/apache/felix/org.apache.felix.configadmin/1.9.8/org.apache.felix.configadmin-1.9.8.jar
-org.apache.felix.gogo.shell;version='[1.0.0,1.0.1)';resolution=file:/home/nikolas/.m2/repository/org/apache/felix/org.apache.felix.gogo.shell/1.0.0/org.apache.felix.gogo.shell-1.0.0.jar
-cy.ac.ucy.epl441.clinic;version=snapshot;resolution=file:/home/nikolas/EclipseWorkspaceOsgi/cy.ac.ucy.epl441.clinic/generated/cy.ac.ucy.epl441.clinic.jar
-org.apache.felix.gogo.runtime;version='[1.0.10,1.0.11)';resolution=file:/home/nikolas/.m2/repository/org/apache/felix/org.apache.felix.gogo.runtime/1.0.10/org.apache.felix.gogo.runtime-1.0.10.jar
-org.apache.felix.gogo.command;version='[1.0.2,1.0.3)';resolution=file:/home/nikolas/.m2/repository/org/apache/felix/org.apache.felix.gogo.command/1.0.2/org.apache.felix.gogo.command-1.0.2.jar
-org.apache.felix.configurator;version='[1.0.6,1.0.7)';resolution=file:/home/nikolas/.m2/repository/org/apache/felix/org.apache.felix.configurator/1.0.6/org.apache.felix.configurator-1.0.6.jar

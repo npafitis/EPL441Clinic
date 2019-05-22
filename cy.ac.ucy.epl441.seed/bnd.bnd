@@ -1,0 +1,13 @@
+Bundle-Version: 1.0.0.${tstamp}
+
+-baseline: *
+-buildpath: \
+	osgi.annotation;version=7.0.0,\
+	osgi.cmpn;version=7.0.0,\
+	cy.ac.ucy.epl441.model;version=latest
+
+javac.source: 1.8
+javac.target: 1.8
+
+-includeresource: resources
+-privatepackage: cy.ac.ucy.epl441.seed

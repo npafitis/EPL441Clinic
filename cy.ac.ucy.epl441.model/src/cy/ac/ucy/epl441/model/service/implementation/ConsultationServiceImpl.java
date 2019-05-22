@@ -28,7 +28,7 @@ public class ConsultationServiceImpl implements ConsultationService {
 	@Override
 	public void create(Consultation item) {
 		String query = 	"INSERT INTO Consultation (userId, patientId, consultationDate, attended)\n" + 
-				String.format("VALUES (%d, %d, %s, %s,%s,%s)",
+				String.format("VALUES (%d, %d, \"%s\", %s)",
 						item.getUserId(),
 						item.getPatientId(),
 						item.getDate().toString(),
@@ -75,7 +75,7 @@ public class ConsultationServiceImpl implements ConsultationService {
 				int consultationId = rs.getInt("consultationId");
 				int userId = rs.getInt("userId");
 				int patientId = rs.getInt("patientId");
-				Date date = rs.getDate("date");
+				Date date = rs.getDate("consultationDate");
 				boolean attended = rs.getBoolean("attended");
 				Consultation consultation = new Consultation(consultationId, userId, patientId, date, attended);
 				return consultation;
@@ -89,7 +89,7 @@ public class ConsultationServiceImpl implements ConsultationService {
 	@Override
 	public void update(Consultation item) {
 		String query = 
-				"UPDATE User" +
+				"UPDATE Consultation" +
 				"Set 	consultationDate = " + item.getDate() +
 				"		attended = " + item.isAttended() +
 				"Where consultationId = " + item.getConsultationId();

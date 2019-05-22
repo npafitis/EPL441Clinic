@@ -2,6 +2,7 @@ package cy.ac.ucy.epl441.model;
 
 public class User {
 	private int userId;
+	private String password;
 	private String name;
 	private String email;
 	private String phone;
@@ -21,11 +22,13 @@ public class User {
 		this.role = role;
 	}
 
-	public User(String name, String email, String phone) {
+	public User(String name, String email, String phone, Role role, String password) {
 		super();
+		this.password = password;
 		this.name = name;
 		this.email = email;
 		this.phone = phone;
+		this.role = role;
 	}
 	
 	public void setUserId(int userId) {
@@ -62,6 +65,14 @@ public class User {
 
 	public void setRole(Role role) {
 		this.role = role;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 	

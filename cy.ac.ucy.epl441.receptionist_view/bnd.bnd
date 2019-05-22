@@ -15,3 +15,4 @@ javac.target: 1.8
 
 Bundle-Version: 0.0.0.${tstamp}
 Export-Package: cy.ac.ucy.epl441.receptionist_view
+-privatepackage: cy.ac.ucy.epl441.receptionist_view.Implementation

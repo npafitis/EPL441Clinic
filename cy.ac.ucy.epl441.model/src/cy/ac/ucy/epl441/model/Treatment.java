@@ -7,6 +7,8 @@ public class Treatment {
 	private int patientId;
 	private String description;
 	private Date date;
+	
+	
 	public Treatment(int patientId, String description, Date date) {
 		super();
 		this.patientId = patientId;

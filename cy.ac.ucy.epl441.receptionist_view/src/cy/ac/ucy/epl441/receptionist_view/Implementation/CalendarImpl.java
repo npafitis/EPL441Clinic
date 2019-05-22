@@ -1,4 +1,4 @@
-package cy.ac.ucy.epl441.receptionist_view;
+package cy.ac.ucy.epl441.receptionist_view.Implementation;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -9,6 +9,7 @@ import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.jdbc.DataSourceFactory;
@@ -19,6 +20,10 @@ import cy.ac.ucy.epl441.model.User;
 import cy.ac.ucy.epl441.model.service.ConsultationService;
 import cy.ac.ucy.epl441.model.service.PatientService;
 import cy.ac.ucy.epl441.model.service.UserService;
+import cy.ac.ucy.epl441.receptionist_view.AppointmentDone;
+import cy.ac.ucy.epl441.receptionist_view.Calendar;
+import cy.ac.ucy.epl441.receptionist_view.PatientInfo;
+import cy.ac.ucy.epl441.receptionist_view.Prescription;
 
 import javax.swing.JLabel;
 import javax.swing.JTabbedPane;

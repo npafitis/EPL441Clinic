@@ -6,10 +6,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import org.osgi.service.component.annotations.Component;
+
 import cy.ac.ucy.epl441.model.Diagnosis;
 import cy.ac.ucy.epl441.model.Patient;
 import cy.ac.ucy.epl441.model.service.DiagnosisService;
 
+@Component
 public class DiagnosisServiceImpl implements DiagnosisService {
 	private Connection con;
 	
@@ -25,11 +28,12 @@ public class DiagnosisServiceImpl implements DiagnosisService {
 
 	@Override
 	public void create(Diagnosis item) {
-		String query = 	"INSERT INTO Diagnosis (patientId, details, comments)\n" + 
-				String.format("VALUES (%d, %s, %s)",
+		String query = 	"INSERT INTO Diagnosis (patientId, details, comments, date)\n" + 
+				String.format("VALUES (%d, \"%s\", \"%s\", \"%s\")",
 						item.getPatientId(),
 						item.getDetails(),
-						item.getComments()
+						item.getComments(),
+						item.getDiagnosisDate()
 				);
 		try {
 			Statement stmt = con.createStatement();
@@ -50,10 +54,11 @@ public class DiagnosisServiceImpl implements DiagnosisService {
 			while (rs.next()) {
 				Diagnosis diagnosis = 
 						new Diagnosis(
-								rs.getInt(0),
 								rs.getInt(1),
-								rs.getString(2),
-								rs.getString(3)
+								rs.getInt(2),
+								rs.getString(3),
+								rs.getString(4),
+								rs.getDate(5)
 								);
 				list.add(diagnosis);
 			}		
@@ -72,10 +77,11 @@ public class DiagnosisServiceImpl implements DiagnosisService {
 			while (rs.next()) {
 				Diagnosis diagnosis = 
 						new Diagnosis(
-								rs.getInt(0),
 								rs.getInt(1),
-								rs.getString(2),
-								rs.getString(3)
+								rs.getInt(2),
+								rs.getString(3),
+								rs.getString(4),
+								rs.getDate(5)
 								);
 				return diagnosis;
 			}		
@@ -88,10 +94,11 @@ public class DiagnosisServiceImpl implements DiagnosisService {
 	@Override
 	public void update(Diagnosis item) {
 		String query = 
-				"UPDATE Diagnosis" +
-				"Set 	patientId = " + item.getPatientId() +
-				"		details = " + item.getDetails() +
-				"		comments = " + item.getComments() +
+				"UPDATE Diagnosis\n" +
+				"Set 	patientId = " + item.getPatientId() + "\n"+
+				"		details = \"" + item.getDetails() +"\""+"\n"+
+				"		comments = \"" + item.getComments() +"\""+"\n"+
+				" 		date = \""+item.getDiagnosisId()+"\""+"\n"+
 				"Where diagnosisId = " + item.getDiagnosisId();
 		try {
 			Statement stmt = con.createStatement();

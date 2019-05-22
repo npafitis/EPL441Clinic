@@ -26,19 +26,22 @@ public class UserServiceImpl implements UserService {
 	}
 
 	private Connection con;
+	
+	
 	@Override
 	public void create(User item) {
-		String query = 	"INSERT INTO User (name, email, phone, role)\n" + 
-						String.format("VALUES (%s, %s, %s, %s,%s,%s)",
+		String query = 	"INSERT INTO User (name,password, email, phone, role)\n" + 
+						String.format("VALUES (\"%s\", \"%s\", \"%s\", \"%s\",\"%s\")",
 								item.getName(),
+								item.getPassword(),
 								item.getEmail(),
 								item.getPhone(),
-								item.getRole().name());
+								item.getRole().toString());
 		try {
 			Statement stmt = con.createStatement();
 			stmt.executeUpdate(query);
-			
 		} catch (SQLException e) {
+			System.out.println(e.getMessage());
 			e.printStackTrace();
 		}
 		
@@ -98,10 +101,10 @@ public class UserServiceImpl implements UserService {
 	public void update(User item) {
 		String query = 
 				"UPDATE User" +
-				"Set 	name = " + item.getName() +
-				"		email = " + item.getEmail() +
-				"		phone = " + item.getPhone() +
-				"		role = " + item.getRole() +
+				"Set 	name = \"" + item.getName() +"\""+
+				"		email = \"" + item.getEmail() +"\""+
+				"		phone = \"" + item.getPhone() +"\""+
+				"		role = \"" + item.getRole() +"\""+
 				"Where userId = " + item.getUserId();
 		try {
 			Statement stmt = con.createStatement();

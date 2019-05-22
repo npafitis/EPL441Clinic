@@ -1,7 +1,8 @@
 -buildpath: \
-	osgi.annotation; version=7.0.0,\
-	osgi.core; version=7.0.0,\
-	osgi.cmpn; version=7.0.0
+	osgi.annotation;version=7.0.0,\
+	osgi.core;version=7.0.0,\
+	osgi.cmpn;version=7.0.0,\
+	com.mysql.cj
 
 -testpath: \
 	${junit},\
@@ -15,6 +16,4 @@ Bundle-Version: 0.0.0.${tstamp}
 Export-Package: \
 	cy.ac.ucy.epl441.model,\
 	cy.ac.ucy.epl441.model.service
--privatepackage: \
-	cy.ac.ucy.epl441.model.service.implementation,\
-	cy.ac.ucy.epl441.model.service.fileservice
+-privatepackage: cy.ac.ucy.epl441.model.service.implementation

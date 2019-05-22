@@ -22,7 +22,7 @@ public class RoleServiceImpl implements RoleService {
 	@Override
 	public void create(Role item) {
 		String query = 	"INSERT INTO Role (role)\n" + 
-						String.format("VALUES (%s)", item.name());
+						String.format("VALUES (\"%s\")", item.name());
 		try {
 			Statement stmt = con.createStatement();
 			stmt.executeUpdate(query);

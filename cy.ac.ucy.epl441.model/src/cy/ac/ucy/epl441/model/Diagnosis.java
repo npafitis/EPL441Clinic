@@ -1,8 +1,11 @@
 package cy.ac.ucy.epl441.model;
 
+import java.sql.Date;
+
 public class Diagnosis {
 	private int diagnosisId;
 	private int patientId;
+	private Date diagnosisDate;
 	private String details;
 	private String comments;
 	
@@ -12,15 +15,16 @@ public class Diagnosis {
 	}
 	
 	
-	public Diagnosis(int patientId, String details, String comments) {
+	public Diagnosis(int patientId, String details, String comments, Date date) {
 		super();
 		this.patientId = patientId;
 		this.details = details;
 		this.comments = comments;
+		this.diagnosisDate = date;
 	}
 
 
-	public Diagnosis(int diagnosisId, int patientId, String details, String comments) {
+	public Diagnosis(int diagnosisId, int patientId, String details, String comments, Date date) {
 		super();
 		this.diagnosisId = diagnosisId;
 		this.patientId = patientId;
@@ -45,13 +49,23 @@ public class Diagnosis {
 		return details;
 	}
 	public void setDetails(String details) {
-		this.details = details;
+		this.details = new String(details);
 	}
 	public String getComments() {
 		return comments;
 	}
 	public void setComments(String comments) {
 		this.comments = comments;
+	}
+
+
+	public Date getDiagnosisDate() {
+		return diagnosisDate;
+	}
+
+
+	public void setDiagnosisDate(Date diagnosisDate) {
+		this.diagnosisDate = diagnosisDate;
 	}
 	
 	

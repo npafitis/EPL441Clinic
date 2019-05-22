@@ -13,20 +13,19 @@ import cy.ac.ucy.epl441.model.Patient;
 import cy.ac.ucy.epl441.model.service.AllergyService;
 
 @Component
-public class AllergyServiceImpl implements AllergyService {
+public class AllergyServiceImpl implements AllergyService  {
 	public AllergyServiceImpl(Connection con) {
 		super();
 		this.con = con;
 	}
 
-	private Connection con;
+	public Connection con;
 	
 	@Override
 	public void create(Allergy item) {
-		String query = 	"INSERT INTO Allergy (name)\n" + 
-				String.format("VALUES (%s)",
-						item.getName()
-				);
+		String query = 
+				"INSERT INTO Allergy (name)\n" + 
+				"values (\""+item.getName()+"\")";
 		try {
 			Statement stmt = con.createStatement();
 			stmt.executeUpdate(query);
@@ -51,8 +50,8 @@ public class AllergyServiceImpl implements AllergyService {
 			while (rs.next()) {
 				Allergy allergy = 
 						new Allergy(
-								rs.getInt(0),
-								rs.getString(1)
+								rs.getInt(1),
+								rs.getString(2)
 								);
 				list.add(allergy);
 			}		
@@ -71,8 +70,8 @@ public class AllergyServiceImpl implements AllergyService {
 			while (rs.next()) {
 				Allergy allergy = 
 						new Allergy(
-								rs.getInt(0),
-								rs.getString(1)
+								rs.getInt(1),
+								rs.getString(2)
 								);
 				return allergy;
 			}		
@@ -85,9 +84,9 @@ public class AllergyServiceImpl implements AllergyService {
 	@Override
 	public void update(Allergy item) {
 		String query = 
-				"UPDATE Allergy" +
-				"Set 	name = " + item.getName() +
-				"Where allergyId = " + item.getAllergyId();
+				"update Allergy\n" + 
+				"set name = \""+item.getName()+"\"\n" + 
+				"where allergyId = " + item.getAllergyId();
 		try {
 			Statement stmt = con.createStatement();
 			stmt.executeUpdate(query);
@@ -132,7 +131,6 @@ public class AllergyServiceImpl implements AllergyService {
 	@Override
 	public void setConnection(Connection con) {
 		this.con = con;
-		
 	}
 
 }

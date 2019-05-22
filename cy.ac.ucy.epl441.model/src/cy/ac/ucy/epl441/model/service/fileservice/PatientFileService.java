@@ -28,6 +28,7 @@ import cy.ac.ucy.epl441.model.InformationChanges;
 import cy.ac.ucy.epl441.model.Patient;
 import cy.ac.ucy.epl441.model.Relative;
 import cy.ac.ucy.epl441.model.Treatment;
+import cy.ac.ucy.epl441.model.User;
 import cy.ac.ucy.epl441.model.service.PatientService;
 
 public class PatientFileService implements PatientService{
@@ -264,6 +265,13 @@ public class PatientFileService implements PatientService{
 
 	@Override
 	public void setConnection(Connection con) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void addAllergy(Patient patient, Allergy allergy) {
 		// TODO Auto-generated method stub
 		
 	}

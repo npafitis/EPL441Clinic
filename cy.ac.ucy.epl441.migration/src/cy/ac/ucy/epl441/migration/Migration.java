@@ -40,7 +40,8 @@ public class Migration {
 	
 	private static final String CREATE_USER_TABLE = 
 			"CREATE TABLE User (\n" + 
-			"    userId INTEGER not NULL AUTO_INCREMENT,\n" + 
+			"    userId INTEGER not NULL AUTO_INCREMENT,\n" +
+			" 	 password VARCHAR(255) not NULL, \n"+
 			"    name VARCHAR(255) not NULL,\n" + 
 			"    email VARCHAR(255) not NULL unique,\n" + 
 			"    phone VARCHAR(15) not NULL,\n" + 
@@ -156,6 +157,7 @@ public class Migration {
 			"    patientId INTEGER not NULL,\n" + 
 			"    details VARCHAR(255),\n" + 
 			"    comments VARCHAR(255),\n" + 
+			"	 date DATE not null,\n"+
 			"    PRIMARY KEY (diagnosisId),\n" + 
 			"    FOREIGN KEY (patientId) REFERENCES Patient(patientId)\n" + 
 			")";

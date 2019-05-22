@@ -15,3 +15,4 @@ javac.target: 1.8
 
 Bundle-Version: 0.0.0.${tstamp}
 Export-Package: cy.ac.ucy.epl441.health_service_view
+-privatepackage: cy.ac.ucy.epl441.health_service_view.Implementation

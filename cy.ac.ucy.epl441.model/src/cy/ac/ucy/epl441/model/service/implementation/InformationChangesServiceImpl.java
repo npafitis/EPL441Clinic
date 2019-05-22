@@ -23,7 +23,7 @@ public class InformationChangesServiceImpl implements InformationChangeService {
 	@Override
 	public void create(InformationChanges item) {
 		String query = 	"INSERT INTO InformationChange ( patientId, changeDate, oldName, oldEmail, oldPhone, newName, newEmail, newPhone, accepted)\n" + 
-				String.format("VALUES (%d, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
+				String.format("VALUES (%d, \"%s\", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\", %s)",
 						item.getPatientId(),
 						item.getDate().toString(),
 						item.getOldName(),
@@ -56,16 +56,16 @@ public class InformationChangesServiceImpl implements InformationChangeService {
 			while (rs.next()) {
 				InformationChanges change = 
 						new InformationChanges(
-								rs.getInt(0),
 								rs.getInt(1),
-								rs.getDate(2),
-								rs.getString(3),
+								rs.getInt(2),
+								rs.getDate(3),
 								rs.getString(4),
 								rs.getString(5),
 								rs.getString(6),
 								rs.getString(7),
 								rs.getString(8),
-								rs.getBoolean(9)
+								rs.getString(9),
+								rs.getBoolean(10)
 								);
 				list.add(change);
 			}		
@@ -84,16 +84,16 @@ public class InformationChangesServiceImpl implements InformationChangeService {
 			while (rs.next()) {
 				InformationChanges change = 
 						new InformationChanges(
-								rs.getInt(0),
 								rs.getInt(1),
-								rs.getDate(2),
-								rs.getString(3),
+								rs.getInt(2),
+								rs.getDate(3),
 								rs.getString(4),
 								rs.getString(5),
 								rs.getString(6),
 								rs.getString(7),
 								rs.getString(8),
-								rs.getBoolean(9)
+								rs.getString(9),
+								rs.getBoolean(10)
 								);
 				return change;
 			}		

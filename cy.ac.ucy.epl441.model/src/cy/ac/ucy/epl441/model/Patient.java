@@ -7,6 +7,7 @@ public class Patient {
 	private String phone;
 	private String status;
 	private boolean selfHarm;
+	
 	public int getPatientId() {
 		return patientId;
 	}

@@ -17,6 +17,7 @@ import cy.ac.ucy.epl441.model.InformationChanges;
 import cy.ac.ucy.epl441.model.Patient;
 import cy.ac.ucy.epl441.model.Relative;
 import cy.ac.ucy.epl441.model.Treatment;
+import cy.ac.ucy.epl441.model.User;
 import cy.ac.ucy.epl441.model.service.PatientService;
 
 @Component
@@ -25,12 +26,13 @@ public class PatientServiceImpl implements PatientService {
 
 	@Override
 	public void create(Patient item) {
-		String query = 	"INSERT INTO Patient (name, email, phone, selfHarm)\n" + 
-				String.format("VALUES (%s, %s, %s, %s)",
+		String query = 	"INSERT INTO Patient (name, email, phone, selfHarm, status)\n" + 
+				String.format("VALUES (\"%s\", \"%s\", \"%s\", %s, \"%s\")",
 						item.getName(),
 						item.getEmail(),
 						item.getPhone(),
-						new Boolean(item.isSelfHarm()).toString()
+						new Boolean(item.isSelfHarm()).toString(),
+						item.getStatus()
 				);
 		try {
 			Statement stmt = con.createStatement();
@@ -61,12 +63,12 @@ public class PatientServiceImpl implements PatientService {
 			while (rs.next()) {
 				Patient p = 
 						new Patient(
-								rs.getInt(0),
-								rs.getString(1),
+								rs.getInt(1),
 								rs.getString(2),
 								rs.getString(3),
-								rs.getBoolean(4),
-								rs.getString(5)
+								rs.getString(4),
+								rs.getBoolean(5),
+								rs.getString(6)
 								);
 				list.add(p);
 			}		
@@ -85,12 +87,12 @@ public class PatientServiceImpl implements PatientService {
 			while (rs.next()) {
 				Patient p = 
 						new Patient(
-								rs.getInt(0),
-								rs.getString(1),
+								rs.getInt(1),
 								rs.getString(2),
 								rs.getString(3),
-								rs.getBoolean(4),
-								rs.getString(5)
+								rs.getString(4),
+								rs.getBoolean(5),
+								rs.getString(6)
 								);
 				return p;
 			}		
@@ -104,10 +106,11 @@ public class PatientServiceImpl implements PatientService {
 	public void update(Patient item) {
 		String query = 
 				"UPDATE Treatment" +
-				"Set 	name = " + item.getName()+
-				"		email = " + item.getEmail() +
-				"		phone = " + item.getPhone() +
-				"		selfHarm =" + new Boolean(item.isSelfHarm()).toString()	+
+				"Set 	name = \"" + item.getName()+ "\""+
+				"		email = \"" + item.getEmail() +"\""+
+				"		phone = \"" + item.getPhone() +"\""+
+				"		selfHarm = " + new Boolean(item.isSelfHarm()).toString()+
+				"		status= \"" + item.getStatus() + "\""+	
 				"Where patientId = " + item.getPatientId();
 		try {
 			Statement stmt = con.createStatement();
@@ -231,5 +234,20 @@ public class PatientServiceImpl implements PatientService {
 	public void setConnection(Connection con) {
 		this.con = con;
 		
+	}
+
+	@Override
+	public void addAllergy(Patient patient, Allergy allergy) {
+		String query = 
+				String.format("INSERT INTO PatientAllergy (patientId, allergyId)\n" + 
+						"values (%d,%d)", patient.getPatientId(), allergy.getAllergyId());
+		Statement stmt;
+		try {
+			stmt = con.createStatement();
+			stmt.executeUpdate(query);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
 	}
 }

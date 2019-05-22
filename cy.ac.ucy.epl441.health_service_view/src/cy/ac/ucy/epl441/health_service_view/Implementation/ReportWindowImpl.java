@@ -1,4 +1,4 @@
-package cy.ac.ucy.epl441.health_service_view;
+package cy.ac.ucy.epl441.health_service_view.Implementation;
 
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -20,10 +20,13 @@ import javax.swing.JPanel;
 import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
 
+import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.jdbc.DataSourceFactory;
 
+import cy.ac.ucy.epl441.health_service_view.ReportWindow;
+import cy.ac.ucy.epl441.health_service_view.SelectReport;
 import cy.ac.ucy.epl441.model.Consultation;
 import cy.ac.ucy.epl441.model.Patient;
 import cy.ac.ucy.epl441.model.Treatment;
@@ -50,8 +53,8 @@ public class ReportWindowImpl extends JFrame implements ReportWindow{
 	@Reference
 	private ConsultationService consultationService;
 	
-	@Reference
-	private SelectReport sr;
+//	@Reference
+//	private SelectReport sr;
 	
 	{
 		Properties properties = new Properties();
@@ -153,8 +156,8 @@ public class ReportWindowImpl extends JFrame implements ReportWindow{
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				contentPane.setVisible(false);
-				sr.create();
-				sr.frame.setVisible(true);
+//				sr.create();
+//				sr.setVisible(true);
 			}
 		});
 		btnNewButton.setBounds(18, 12, 34, 29);

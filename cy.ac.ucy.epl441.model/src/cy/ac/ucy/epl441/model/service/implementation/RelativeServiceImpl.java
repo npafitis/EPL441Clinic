@@ -22,18 +22,20 @@ public class RelativeServiceImpl implements RelativeService {
 
 	@Override
 	public void create(Relative item) {
-		String query = 	"INSERT INTO Relative (patientId,name, email, phone, role)\n" + 
-				String.format("VALUES (%d, %s, %s, %s,%s,%s)",
+		String query = 	"INSERT INTO Relative (patientId, name, email, phone)\n" + 
+				String.format("VALUES (%d, \"%s\", \"%s\", \"%s\")",
 						item.getPatientId(),
 						item.getName(),
 						item.getEmail(),
 						item.getPhone()
 				);
 		try {
+//			System.out.println(query);
 			Statement stmt = con.createStatement();
 			stmt.executeUpdate(query);
 			
 		} catch (SQLException e) {
+			System.out.println("Lol");
 			e.printStackTrace();
 		}
 	}
@@ -52,11 +54,11 @@ public class RelativeServiceImpl implements RelativeService {
 			while (rs.next()) {
 				Relative relative = 
 						new Relative(
-								rs.getInt(0),
 								rs.getInt(1),
-								rs.getString(2),
+								rs.getInt(2),
 								rs.getString(3),
-								rs.getString(4)
+								rs.getString(4),
+								rs.getString(5)
 								);
 				list.add(relative);
 			}		
@@ -75,11 +77,11 @@ public class RelativeServiceImpl implements RelativeService {
 			while (rs.next()) {
 				Relative relative = 
 						new Relative(
-								rs.getInt(0),
 								rs.getInt(1),
-								rs.getString(2),
+								rs.getInt(2),
 								rs.getString(3),
-								rs.getString(4)
+								rs.getString(4),
+								rs.getString(5)
 								);
 				return relative;
 			}		
@@ -94,9 +96,9 @@ public class RelativeServiceImpl implements RelativeService {
 		String query = 
 				"UPDATE Relative" +
 				"Set 	patientId = " + item.getPatientId() +
-				"		name = " + item.getName() +
-				"		email = " + item.getEmail() +
-				"		phone = " + item.getPhone() +
+				"		name = \"" + item.getName() +"\""+
+				"		email = \"" + item.getEmail() +"\""+
+				"		phone = \"" + item.getPhone() +"\""+
 				"Where relativeId = " + item.getRelativeId();
 		try {
 			Statement stmt = con.createStatement();

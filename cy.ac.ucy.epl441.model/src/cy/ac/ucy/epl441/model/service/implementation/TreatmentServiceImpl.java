@@ -21,10 +21,11 @@ public class TreatmentServiceImpl implements TreatmentService {
 
 	private Connection con;
 	
+	
 	@Override
 	public void create(Treatment item) {
 		String query = 	"INSERT INTO Treatment (patientId, description, treatmentDate)\n" + 
-				String.format("VALUES (%d, %s, %s)",
+				String.format("VALUES (%d, \"%s\", \"%s\")",
 						item.getPatientId(),
 						item.getDescription(),
 						item.getDate().toString()
@@ -53,10 +54,10 @@ public class TreatmentServiceImpl implements TreatmentService {
 			while (rs.next()) {
 				Treatment treatment = 
 						new Treatment(
-								rs.getInt(0),
 								rs.getInt(1),
-								rs.getString(2),
-								rs.getDate(3)
+								rs.getInt(2),
+								rs.getString(3),
+								rs.getDate(4)
 								);
 				list.add(treatment);
 			}		
@@ -75,10 +76,10 @@ public class TreatmentServiceImpl implements TreatmentService {
 			while (rs.next()) {
 				Treatment treatment = 
 						new Treatment(
-								rs.getInt(0),
 								rs.getInt(1),
-								rs.getString(2),
-								rs.getDate(3)
+								rs.getInt(2),
+								rs.getString(3),
+								rs.getDate(4)
 								);
 				return treatment;
 			}		
@@ -93,8 +94,8 @@ public class TreatmentServiceImpl implements TreatmentService {
 		String query = 
 				"UPDATE Treatment" +
 				"Set 	patientId = " + item.getPatientId() +
-				"		description = " + item.getDescription() +
-				"		treatmentDate = " + item.getDate().toString() +
+				"		description = \"" + item.getDescription() + "\""+
+				"		treatmentDate = \"" + item.getDate().toString() +"\""+
 				"Where treatmentId = " + item.getTreatmentId();
 		try {
 			Statement stmt = con.createStatement();
@@ -120,5 +121,42 @@ public class TreatmentServiceImpl implements TreatmentService {
 	public void setConnection(Connection con) {
 		this.con = con;
 		
+	}
+
+	@Override
+	public ArrayList<Allergy> getAllergies(Treatment treatment) {
+		String query = "SELECT allergyId FROM TreatmentAllergy where treatmentId="+treatment.getTreatmentId();
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		try {
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+			while (rs.next()) {
+				int allergyId = rs.getInt(0);
+				list.add(allergyId);
+			}		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		ArrayList<Allergy> allergies = new ArrayList<Allergy>();
+		AllergyServiceImpl service = new AllergyServiceImpl(con);
+		for(int i:list) {
+			allergies.add(service.get(i));
+		}
+		return allergies;
+	}
+
+	@Override
+	public void addAllergy(Treatment treatment, Allergy allergy) {
+		String query = 
+				String.format("INSERT INTO TreatmentAllergy (treatmentId, allergyId)\n" + 
+						"values (%d,%d)", treatment.getTreatmentId(), allergy.getAllergyId());
+		Statement stmt;
+		try {
+			stmt = con.createStatement();
+			stmt.executeUpdate(query);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

@@ -18,4 +18,6 @@ public interface PatientService extends CRUDService<Patient> {
 	public ArrayList<Consultation> getConsultations(int id);
 	
 	public ArrayList<Diagnosis> getDiagnosis(int id);
+	
+	public void addAllergy(Patient patient, Allergy allergy);
 }

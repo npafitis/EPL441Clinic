@@ -32,7 +32,7 @@ import cy.ac.ucy.epl441.model.service.PatientService;
 import cy.ac.ucy.epl441.model.service.TreatmentService;
 
 public interface ReportWindow{
-	public void create(String str1,String str2);
+	public void create(String str1,String str2) throws ParseException;
 	
 	public void setVisible(boolean bool);
 }
