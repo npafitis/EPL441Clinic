@@ -13,6 +13,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+
+import cy.ac.ucy.epl441.clinicalstaff.Personalinfo;
 import cy.ac.ucy.epl441.model.Allergy;
 import cy.ac.ucy.epl441.model.Patient;
 import cy.ac.ucy.epl441.model.Relative;
@@ -21,8 +23,14 @@ import cy.ac.ucy.epl441.model.service.PatientService;
 import cy.ac.ucy.epl441.model.service.TreatmentService;
 
 
-
-public class PersonalInfoImp {
+/**
+ * This class implements the Personalinfo
+ * interface and create the page with the patients info
+ * 
+ * @author Kyriaki Kekkou
+ *
+ */
+public class PersonalInfoImp implements Personalinfo{
 	
 	
 	private PatientService patientservice;
@@ -30,6 +38,17 @@ public class PersonalInfoImp {
 	private TreatmentService treatmentservice;
 	private DiagnosisService consultationserv;
 	
+	/**
+	 * This is the constructor of the class
+	 * that takes all the needed arguments
+	 * for the page's functionalities or
+	 * the pages that this page use
+	 * 
+	 * @param patientsid patient's id
+	 * @param treatmentservice the treatment service
+	 * @param patientservice patient's service with all the needed information
+	 * @param consultation consultation service that will be forwarded 
+	 */
 	public PersonalInfoImp(int patientsid, TreatmentService treatmentservice, PatientService patientservice, DiagnosisService consultation) {
 		this.treatmentservice=treatmentservice;
 		this.patientsid=patientsid;
@@ -37,6 +56,11 @@ public class PersonalInfoImp {
 		this.consultationserv=consultation;
 		
 	}
+	/**
+	 * This method creates the graphical interface of the page
+	 * and represents all the information about the patient
+	 */
+	@Override
 	public void createpersonalinfo() {
 		
 		Patient pat=patientservice.get(patientsid);

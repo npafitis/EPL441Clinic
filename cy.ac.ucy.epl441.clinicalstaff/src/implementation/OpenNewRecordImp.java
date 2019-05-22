@@ -26,7 +26,14 @@ import cy.ac.ucy.epl441.model.Patient;
 import cy.ac.ucy.epl441.model.service.PatientService;
 
 
-
+/**
+ * This class implements the OpenNewRecord
+ * and create the page for it is the basic component
+ * of this bundle
+ * 
+ * @author Kyriaki Kekkou
+ *
+ */
 @Component
 public class OpenNewRecordImp implements OpenNewRecord{
 	//@Reference
@@ -48,7 +55,12 @@ public class OpenNewRecordImp implements OpenNewRecord{
 		e.printStackTrace();
 	}
 }
-
+	/**
+	 * This method create the graphical interface
+	 * of the OpenNewRecord page and it's responsible
+	 * to manage the user's inputs
+	 * 
+	 */
 	@Activate
 	public void OpenNewRecordcreate() {
 		

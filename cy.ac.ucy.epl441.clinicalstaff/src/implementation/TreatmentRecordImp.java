@@ -21,13 +21,21 @@ import javax.swing.JTextArea;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.border.LineBorder;
 
-
+import cy.ac.ucy.epl441.clinicalstaff.TreatmentRecord;
 import cy.ac.ucy.epl441.model.Treatment;
 import cy.ac.ucy.epl441.model.service.DiagnosisService;
 import cy.ac.ucy.epl441.model.service.PatientService;
 import cy.ac.ucy.epl441.model.service.TreatmentService;
 
-public class TreatmentRecordImp {
+/**
+ * This page implements the TreatmentRecord
+ * and presents to the user all the treatments of the
+ * patient
+ * 
+ * @author Kyriaki Kekkou
+ *
+ */
+public class TreatmentRecordImp implements TreatmentRecord {
 	
 	ArrayList<Treatment> tr = new ArrayList<>();
 	
@@ -40,7 +48,16 @@ public class TreatmentRecordImp {
 	
 	
 	
-	
+	/**
+	 * This is the constructor of the class
+	 * that take arguments that are needed from the
+	 * page or from the forwarded pages
+	 * 
+	 * @param patientsid patient's id
+	 * @param treatment treatment service tha page will use
+	 * @param patientservice patience service
+	 * @param consultation consultations service that will be forwarded
+	 */
 	public TreatmentRecordImp(int patientsid, TreatmentService treatment,PatientService patientservice, DiagnosisService consultation) {
 		this.patientsid=patientsid;
 		this.treatmentservice=treatment;
@@ -48,7 +65,10 @@ public class TreatmentRecordImp {
 		this.consultationservice=consultation;
 	}
 	
-	
+	/**
+	 * This method creates the graphical interface
+	 * of the page
+	 */
 	public void createtreatmentrecord() {
 		
 		tr=treatmentservice.getAll();

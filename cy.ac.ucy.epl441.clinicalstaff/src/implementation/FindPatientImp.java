@@ -17,7 +17,13 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import cy.ac.ucy.epl441.clinicalstaff.FindPatient;
-
+/**
+ * This class implements FindPatient interface
+ * and constructs the page for it 
+ * 
+ * @author Kyriaki Kekkou
+ *
+ */
 public class FindPatientImp implements FindPatient{
 		
 	
@@ -25,7 +31,11 @@ public class FindPatientImp implements FindPatient{
 		
 		
 	}
-
+	/**
+	 * This method create the graphical interface
+	 * of the FindPatient page
+	 * 
+	 */
 	@Override
 	public void FindPatientcreateview() {
 		// TODO Auto-generated method stub
